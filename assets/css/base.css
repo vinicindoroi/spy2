@@ -1,0 +1,117 @@
+/* ============================================================
+   Love Finder Original — base.css
+   Port 1:1 of private-quizz src/style.css (global reset + typography)
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: 400;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+:root {
+  --uncover-bg-deep: #020a1e;
+  --uncover-bg-navy: #061a3a;
+  --uncover-neon: #0a84ff;
+  --uncover-cyan: #38d6ff;
+  --uncover-glow: rgba(10, 132, 255, 0.45);
+}
+
+body {
+  background: linear-gradient(180deg, #061a3a 0%, #020a1e 100%);
+  background-color: #020a1e;
+  color: #ffffff;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: #00bd7e;
+  transition: 0.4s;
+}
+
+img { max-width: 100%; }
+
+button { font-family: inherit; }
+input { font-family: inherit; }
+
+/* Layout base */
+.page-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px;
+  min-height: 100vh;
+}
+
+.content-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 20px;
+  margin-bottom: 16px;
+  color: #1a2a44;
+}
+
+/* Botões */
+.action-button {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.action-button.primary {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+.action-button.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+}
+
+.action-button.secondary {
+  background: transparent;
+  color: #666;
+  border: 1px solid #ddd;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: none;
+  padding: 10px;
+}
+
+/* Cores de atividade */
+.high-activity   { color: #e74c3c; }
+.medium-activity { color: #f39c12; }
+.low-activity    { color: #27ae60; }
+
+/* Utilitários */
+.text-center { text-align: center; }
+.mt-8  { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+
+.hidden { display: none !important; }

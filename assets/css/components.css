@@ -1,0 +1,89 @@
+/* ============================================================
+   Love Finder Original — components.css
+   Shared shell pieces: navbar + route transition (App.vue port)
+   ============================================================ */
+
+/* Top navbar (spy logo) — Step1Target / Step2Intro */
+.navbar {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+}
+
+.nav-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 16px rgba(10, 132, 255, 0.45);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-wordmark {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: #fff;
+  line-height: 1;
+}
+
+.nav-wordmark span {
+  background: linear-gradient(90deg, #38d6ff, #0a84ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Route transition (App.vue route-fade) — applied as enter animation in MPA */
+.route-fade {
+  animation: route-fade-in 0.32s ease both;
+}
+
+@keyframes route-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.992);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Generic fade used by modals/banners (Vue <Transition name="fade">) */
+.fade {
+  animation: fade-in 0.3s ease both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.alert-fade {
+  animation: alert-fade-in 0.28s ease both;
+}
+
+@keyframes alert-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lock-toast {
+  animation: lock-toast-in 0.22s ease both;
+}
+
+@keyframes lock-toast-in {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}

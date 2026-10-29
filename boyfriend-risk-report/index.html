@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="../assets/js/pixels.js?v=20261008-4"></script>
+  <link rel="icon" type="image/webp" href="../assets/img/uncoverai-logo-256.webp" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover the Truth</title>
+  <link rel="stylesheet" href="../assets/css/base.css?v=20261009-1" />
+  <link rel="stylesheet" href="../assets/css/components.css?v=20261009-3" />
+  <link rel="stylesheet" href="../assets/css/pages.css?v=20261009-21" />
+</head>
+<body>
+  <div class="result-page" data-gender="boyfriend">
+    <div class="security-timer-banner hidden" id="stickyBanner">
+      <span class="banner-copy">For your security, this file will disappear in</span>
+      <span class="banner-timer-value" id="bannerTimer">05:00</span>
+      <span class="banner-copy">Unlock full report before time runs out</span>
+      <a href="#" class="banner-unlock-link cta-main" data-checkout>Unlock Full Report Now</a>
+    </div>
+
+    <div class="page-content">
+      <section class="emergency-alert section-card section-card-danger">
+        <div class="alert-title">WARNING: CHEATING DETECTED</div>
+        <div class="alert-phone-box" data-phone>—</div>
+      </section>
+
+      <section class="unified-warning section-card section-card-light">
+        <div class="warning-core">
+          <div class="risk-badge">RISK LEVEL: <strong>HIGH</strong></div>
+          <div class="warning-strip warning-strip-accent">Someone here is lying and it is you or them.</div>
+          <div class="warning-strip">
+            Stay in the dark and be the last to know, or see every message, every contact, every secret in seconds.
+          </div>
+        </div>
+      </section>
+
+      <section class="report-info section-card section-card-light">
+        <div class="report-info-top">REPORT EXPORTED WITH 98% ACCURACY ON: <span id="reportDateTime"></span></div>
+
+        <div class="report-export-card">
+          <img id="reportAvatar" class="report-profile-avatar" alt="profile" />
+          <div class="report-phone-pill" data-phone>—</div>
+          <div class="report-id-line">Report ID: RPT-<span id="reportId"></span></div>
+        </div>
+      </section>
+
+      <section class="findings-card section-card section-card-light">
+        <div class="findings-tab">KEY FINDINGS</div>
+
+        <ul class="findings-list findings-list-compact" id="findingsList"></ul>
+
+        <div class="activity-log-panel">
+          <div class="activity-log-head">
+            <span class="activity-log-title">Activity Log</span>
+            <span class="forensic-chip solid">FORENSIC AUDIT</span>
+          </div>
+
+          <div class="log-entries">
+            <div class="log-entry log-meta">
+              <span class="log-meta-text">Older logs hidden</span>
+            </div>
+
+            <div id="activityLogEntries"></div>
+
+            <div class="log-entry log-meta">
+              <span class="log-meta-text">Newer logs available in full report</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="stickyTrigger" class="heatmap-card section-card section-card-light">
+        <div class="section-heading-row compact">
+          <span class="section-kicker blue">Platform activity analysis</span>
+        </div>
+
+        <div class="heatmap-list" id="heatmapList"></div>
+      </section>
+
+      <section class="location-card section-card section-card-light">
+        <div class="location-header-text">📍 The phone (<span data-phone>—</span>) you want to track was recently located here</div>
+
+        <div class="location-address-bar">
+          Private address: <strong>a private residence near <span id="locationCity">BLOCKED</span></strong>
+        </div>
+
+        <div class="map-preview">
+          <img src="../assets/img/modulo_1.png" class="map-base" alt="location map" />
+        </div>
+      </section>
+
+      <section class="screenshot-card section-card section-card-light">
+        <div class="messages-title">We have detected suspicious messages on WhatsApp</div>
+        <div class="messages-subtitle">(Get access to the app to view messages.)</div>
+
+        <div class="chat-shot-frame">
+          <img id="chatShot" class="chat-screenshot" alt="chat" />
+        </div>
+      </section>
+
+      <section class="evidence-card section-card section-card-light">
+        <div class="messages-title">We have detected photos and videos containing nudity</div>
+        <div class="messages-subtitle">(Get access to the app to view photos without censorship.)</div>
+
+        <div class="censored-photo-wrap">
+          <img src="../assets/img/inthebus.jpg" class="censored-photo" alt="censored proof" />
+        </div>
+
+        <div class="evidence-report-box">
+          <div class="evidence-box-title">CHEATING EVIDENCE FOUND</div>
+          <div class="evidence-divider"></div>
+          <div class="evidence-contacts-row">
+            <span class="evidence-contacts-label">AFFAIR CONTACTS:</span>
+            <span class="contact-pill">********</span>
+            <span class="contact-pill">********</span>
+          </div>
+          <p class="evidence-copy">
+            67% of all deleted messages are from these exact contacts.<br />
+            Raw sexual content recovered and hidden for a reason.
+          </p>
+          <div class="evidence-divider"></div>
+          <div class="analysis-date">Analysis completed: <span id="analysisDate"></span></div>
+          <div class="evidence-divider"></div>
+          <a href="#" class="cta-main success" data-checkout>Expose Every Hidden Secret Now</a>
+          <div class="evidence-footnote">Full numbers and names revealed instantly. Data 100% guaranteed.</div>
+        </div>
+      </section>
+
+      <section class="how-it-works section-card section-card-light">
+        <div class="how-lead">We've already uncovered hidden files from the phone...</div>
+        <div class="how-bridge">But that's just the beginning.</div>
+        <p class="how-description">
+          With our system, you don't just see what was hidden - you get full control to track, monitor, and recover even more.
+        </p>
+        <div class="how-badge">How It Works</div>
+        <p class="how-subtitle">Watch this quick video and see exactly how the system gives you instant access and complete control - discreetly, securely, and without detection.</p>
+
+        <div class="vsl-result-section">
+          <div class="how-video-wrap">
+            <iframe
+              class="vsl-iframe"
+              src="https://script-prod.b-cdn.net/V0.530/?videoData=https://prod-hostvsl.b-cdn.net/0e3f7df2-86a2-49f1-8227-ec87180c480f/534f5118-ac93-4ba7-9c01-393d71205210/videoInformations.js?VIDEO_ORIGIN=ORIGINAL"
+              title="How it works"
+              allow="fullscreen"
+              referrerpolicy="unsafe-url"
+            ></iframe>
+          </div>
+        </div>
+
+        <a href="#" class="cta-main dark" data-checkout>Now I Understand - Give Me Access</a>
+      </section>
+
+      <section class="pricing-section section-card section-card-offer">
+        <div class="pricing-prelude">
+          <p>You've seen the preview. Here's how to see everything.</p>
+            <p>
+              The Preview you just saw contains less than 5% of all the info our AI found in the number <strong id="maskedPhone"></strong>. All the rest is in the full report.
+            </p>
+          <p>
+            We can't give it all away for free. But you don't need to hire a $3,000 investigator. Get the same level of
+            intel for a one-time payment. No subscription, no recurring fees.
+          </p>
+          <p>Unlock the full report below. All the answers you need right now are there, move fast the offer won't last.</p>
+        </div>
+
+        <div class="offer-chip danger">90% off today only - <span id="offerDate"></span></div>
+
+        <div class="offer-shell">
+          <div class="offer-headline">One price. Full report. No subscription.</div>
+          <img src="../assets/img/uncoverai-logo.webp" alt="UncoverAI" class="offer-spy-icon" />
+          <div class="offer-proof-pill">13,847+ reports generated - join them</div>
+
+          <div class="price-panel">
+            <div class="price-original">Was $490</div>
+            <div class="price-today">$49</div>
+            <div class="price-access">One-time. Lifetime access.</div>
+          </div>
+
+          <div class="savings-text">A private investigator costs $3,000+. You get the same intel for $47.</div>
+
+          <ul class="features-list compact-checks">
+            <li>30-day money-back guarantee</li>
+            <li>1-year secure access</li>
+            <li>Track up to 3 numbers</li>
+            <li>Instant access - no waiting</li>
+          </ul>
+
+          <a href="#" class="cta-main success" data-checkout>Click Here To Expose Everything - 90% OFF TODAY</a>
+
+          <div class="offer-note success-note">30-day money-back guarantee. No questions asked.</div>
+
+          <div class="offer-warning-box">
+            <div class="offer-warning-title">Why act today?</div>
+            <div class="offer-warning-copy">Every second, new messages overwrite old ones. The proof you need could be gone before you come back.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quotes-section section-card section-card-light">
+        <div class="quotes-title">What Our Customers Say</div>
+        <div class="quotes-subtitle">Verified reviews from people who unlocked their full report</div>
+        <div id="quotesList"></div>
+      </section>
+
+      <section class="guarantee-card section-card section-card-light accent-green">
+        <img src="../assets/img/guarantee.png" alt="guarantee" class="guarantee-seal" />
+        <h3 class="guarantee-title">30-Day Money-Back Guarantee</h3>
+        <p class="guarantee-copy">
+          In accordance with U.S. law, we are required to refund you if you are not satisfied within the application window.
+          However, being fully confident that our application works perfectly, we have extended this guarantee to 30 days.
+          This means you have twice the time to test the application and see the results for yourself - with no risk.
+          If, for any reason, you are not satisfied, we will refund you - no questions asked.
+        </p>
+        <div class="guarantee-support-label">If you have any questions regarding refunds, contact:</div>
+        <div class="guarantee-support-name">Customer Service</div>
+        <a href="#" class="cta-main success" data-checkout>Final Chance - Unlock Your Answers Now</a>
+      </section>
+
+      <section class="video-testimonials section-card section-card-light">
+        <div class="quotes-title">They Unlocked the Report - Here's What They Found</div>
+
+        <div id="videoTestimonialsList"></div>
+
+        <div class="video-cta-shell">
+          <a href="#" class="cta-main success compact" data-checkout>Get Your Full Report Now</a>
+        </div>
+      </section>
+
+      <section class="faq-section section-card section-card-light">
+        <div class="faq-title">Frequently Asked Questions</div>
+        <div class="faq-title-underline"></div>
+
+        <div class="faq-container" id="faqContainer"></div>
+      </section>
+
+      <section class="final-cta-block section-card">
+        <div class="final-badge">Limited time</div>
+        <div class="final-headline">One click between you and the truth</div>
+        <div class="final-copy">
+          You've seen the preview. The full report is ready - hidden chats, deleted media, and every contact.
+          The only thing missing is you. Leave this page and the discount ends.
+        </div>
+        <div class="final-urgency">Unlock the complete report now - 90% off. No second chances.</div>
+        <a href="#" class="cta-main success final" data-checkout>Yes - show me everything</a>
+      </section>
+    </div>
+  </div>
+  <script type="module" src="../assets/js/pages/report.js?v=20261011-sck-1"></script>
+</body>
+</html>
