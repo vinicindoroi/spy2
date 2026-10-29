@@ -67,11 +67,24 @@ const checkoutUrl = (() => {
   const url = new URL(cfg.checkout);
   url.searchParams.set('offer', 'back');
   url.searchParams.set('price', String(cfg.price));
-  if (store.targetPhoneNumber) url.searchParams.set('tel', store.targetPhoneNumber);
+  if (store.targetPhoneNumber) { url.searchParams.set('tel', store.targetPhoneNumber); url.searchParams.set('phone', store.targetPhoneNumber); }
   appendTrackingToUrl(url);
   return url.toString();
 })();
-document.querySelectorAll('[data-checkout]').forEach((a) => { a.href = checkoutUrl; });
+document.querySelectorAll('[data-checkout]').forEach((a) => {
+  a.href = checkoutUrl;
+  a.addEventListener('click', () => {
+    try {
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'UncoverAI Special Offer',
+          currency: 'USD',
+          value: Number(cfg.price) || 29.00
+        });
+      }
+    } catch (e) {}
+  });
+});
 
 /* --- Countdown 4:00 --- */
 let timeLeft = 240;

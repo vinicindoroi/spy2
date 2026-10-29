@@ -47,7 +47,7 @@ const offerDate = new Intl.DateTimeFormat('en-US', {
 const checkoutUrl = (() => {
   const url = new URL(CHECKOUT_URL);
   url.searchParams.set('upsell', 'true');
-  if (phone) url.searchParams.set('tel', phone);
+  if (phone) { url.searchParams.set('tel', phone); url.searchParams.set('phone', phone); }
   appendTrackingToUrl(url);
   return url.toString();
 })();
@@ -227,7 +227,20 @@ $('#faqContainer').innerHTML = faqs
     </div>`)
   .join('');
 
-$$('[data-checkout]').forEach((a) => { a.href = checkoutUrl; });
+$('[data-checkout]').forEach((a) => {
+  a.href = checkoutUrl;
+  a.addEventListener('click', () => {
+    try {
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+          content_name: 'UncoverAI Spy Access',
+          currency: 'USD',
+          value: 29.00
+        });
+      }
+    } catch (e) {}
+  });
+});
 $$('.faq-link').forEach((a) => { a.classList.add('cta-main'); });
 
 /* --- Sticky timer (shows when the heatmap card reaches the top) --- */
