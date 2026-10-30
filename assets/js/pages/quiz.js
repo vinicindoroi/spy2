@@ -79,6 +79,7 @@ function finish() {
   try {
     sessionStorage.setItem('lf_after_quiz', '1');
   } catch { /* silent */ }
+  if (window.trkFunnel) { try { trkFunnel.step('coleta_do_telefone_alvo'); } catch(e){} }
   go('../target-phone-lookup/');
 }
 

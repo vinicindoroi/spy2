@@ -159,6 +159,7 @@ $('revealBtn').addEventListener('click', async () => {
   store.lockTargetPhoneSearch(fullPhone);
   $('loadingSub').textContent = `Connecting to ${store.targetPhoneNumber || '...'}`;
   await new Promise((r) => setTimeout(r, 3000));
+  if (window.trkFunnel) { try { trkFunnel.step('varredura_profunda_vsl_inteligente'); } catch(e){} }
   go('../phone-scan-analysis/');
 });
 

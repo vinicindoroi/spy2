@@ -6,6 +6,7 @@ import { go } from '../navigate.js?v=20261011-sck-1';
 document.querySelectorAll('[data-gender]').forEach((btn) => {
   btn.addEventListener('click', () => {
     store.setTargetGender(btn.dataset.gender);
+    if (window.trkFunnel) { try { trkFunnel.step('avaliacao_confidencia'); } catch(e){} }
     go('quiz/');
   });
 });

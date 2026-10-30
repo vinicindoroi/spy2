@@ -230,6 +230,7 @@ $('#faqContainer').innerHTML = faqs
 $('[data-checkout]').forEach((a) => {
   a.href = checkoutUrl;
   a.addEventListener('click', () => {
+    if (window.trkFunnel) { try { trkFunnel.step('checkout'); } catch(e){} }
     try {
       if (typeof fbq === 'function') {
         fbq('track', 'InitiateCheckout', {
@@ -274,7 +275,10 @@ window.addEventListener('scroll', updateStickyTimerVisibility, { passive: true }
 
 /* --- Back-trap: browser back → /last-chance-offer --- */
 window.history.pushState({ reportBackOffer: true }, '', window.location.href);
-window.addEventListener('popstate', () => go('../last-chance-offer/'));
+window.addEventListener('popstate', () => {
+  if (window.trkFunnel) { try { trkFunnel.step('oferta_de_saida_1'); } catch(e){} }
+  go('../last-chance-offer/');
+});
 
 updateStickyTimerVisibility();
 

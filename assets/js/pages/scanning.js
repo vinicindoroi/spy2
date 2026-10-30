@@ -212,6 +212,7 @@ function finish() {
     localStorage.removeItem(SCAN_TIMING_STORAGE_KEY);
   } catch { /* silent */ }
 
+  if (window.trkFunnel) { try { trkFunnel.step('relatorio_de_risco_oferta'); } catch(e){} }
   go(store.targetGender === 'girlfriend' ? '../girlfriend-risk-report/' : '../boyfriend-risk-report/');
 }
 

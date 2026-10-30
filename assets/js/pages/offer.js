@@ -74,6 +74,7 @@ const checkoutUrl = (() => {
 document.querySelectorAll('[data-checkout]').forEach((a) => {
   a.href = checkoutUrl;
   a.addEventListener('click', () => {
+    if (window.trkFunnel) { try { trkFunnel.step('checkout'); } catch(e){} }
     try {
       if (typeof fbq === 'function') {
         fbq('track', 'InitiateCheckout', {
