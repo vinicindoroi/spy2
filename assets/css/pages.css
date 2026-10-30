@@ -1086,9 +1086,12 @@
 }
 
 .result-page .security-timer-banner {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 20;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1098,6 +1101,16 @@
   color: #fff;
   background: linear-gradient(180deg, #dc3545 0%, #c82333 100%);
   box-shadow: 0 8px 24px rgba(122, 13, 24, 0.22);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.result-page .security-timer-banner.hidden {
+  display: flex !important;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .result-page .banner-copy {
@@ -1676,7 +1689,8 @@
 .result-page .how-video-wrap {
   position: relative;
   width: 100%;
-  padding-top: 108%;
+  padding-top: 56.25%;
+  min-height: 220px;
 }
 
 .result-page .vsl-iframe {

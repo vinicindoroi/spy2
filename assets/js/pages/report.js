@@ -325,7 +325,18 @@ function runReport() {
     }, 1000);
     renderTimer();
 
-    window.addEventListener('scroll', updateStickyTimerVisibility, { passive: true });
+    let ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateStickyTimerVisibility();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
     updateStickyTimerVisibility();
   } catch (err) {
     console.error('Report sticky timer error:', err);
