@@ -203,7 +203,8 @@ $('#quotesList').innerHTML = textTestimonials
     </div>`)
   .join('');
 
-$('#videoTestimonialsList').innerHTML = videoTestimonials
+const vtList = $('#videoTestimonialsList');
+if (vtList) vtList.innerHTML = videoTestimonials
   .map((v) => `
     <div class="video-testimonial-card">
       <div class="video-card-header centered">
