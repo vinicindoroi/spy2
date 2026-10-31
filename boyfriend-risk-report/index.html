@@ -1,24 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2313455752763047');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2313455752763047&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-<script src="https://click-charm-73.lovable.app/funnel.js?w=976e24b0-6a4d-4dd1-90af-7b0e1f18cfdd&f=8bdc9e4d-faa1-4793-b0fb-447961d0ba79" data-auto="true" defer></script>
 <script async src="../assets/js/pixels.js?v=20261008-4"></script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -182,6 +164,7 @@ img{max-width:100%;display:block}
   .alert-title{font-size:18px}
 }
 </style>
+<link rel="stylesheet" href="../assets/css/report-fixes.css?v=20261031-1"/>
 </head>
 <body>
 
@@ -280,7 +263,7 @@ img{max-width:100%;display:block}
     <div style="display:inline-block;padding:4px 12px;border-radius:4px;background:#3b82f6;color:#fff;font-size:12px;font-weight:800;margin-bottom:8px">How It Works</div>
     <p style="font-size:12px;line-height:1.5;color:#6b7a8d;margin-bottom:14px">Watch this quick video and see exactly how the system gives you instant access and complete control - discreetly, securely, and without detection.</p>
     <div class="vsl-wrap">
-      <iframe src="https://script-prod.b-cdn.net/V0.530/?videoData=https://prod-hostvsl.b-cdn.net/0e3f7df2-86a2-49f1-8227-ec87180c480f/534f5118-ac93-4ba7-9c01-393d71205210/videoInformations.js?VIDEO_ORIGIN=ORIGINAL" title="How it works" allow="fullscreen" referrerpolicy="unsafe-url"></iframe>
+      <iframe src="https://script-prod.b-cdn.net/V0.530/?videoData=https://prod-hostvsl.b-cdn.net/0e3f7df2-86a2-49f1-8227-ec87180c480f/534f5118-ac93-4ba7-9c01-393d71205210/videoInformations.js?VIDEO_ORIGIN=ORIGINAL" title="How it works" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="unsafe-url"></iframe>
     </div>
     <a href="https://secure.spy.officialprogram.online" class="cta cta-dark">Now I Understand - Give Me Access</a>
   </div>
@@ -396,14 +379,32 @@ img{max-width:100%;display:block}
   el = document.getElementById('chatShot');
   if (el) el.src = gender === 'girlfriend' ? '../assets/img/newchatwoman.png' : '../assets/img/newchatman.png';
 
-  // Profile photo
+  // Use DOM properties for stored data; never interpolate it into markup.
   var photoUrl = '';
-  try { photoUrl = localStorage.getItem('lf_photo_url') || ''; } catch(e){}
-  if (photoUrl && photoUrl.indexOf('http') === 0) {
+  var photoPhone = '';
+  try {
+    photoUrl = localStorage.getItem('lf_photo_url') || '';
+    photoPhone = localStorage.getItem('lf_photo_phone') || '';
+  } catch(e){}
+  if (phone && photoPhone === phone && /^https?:\/\//i.test(photoUrl)) {
     var aw = document.getElementById('avatarWrap');
     if (aw) {
-      aw.innerHTML = '<img src="' + photoUrl + '" alt="profile" onerror="this.parentNode.innerHTML=\'<span>' + initials + '</span>\'">';
+      var photo = document.createElement('img');
+      photo.alt = 'Profile photo';
+      photo.addEventListener('error', function(){
+        var fallback = document.createElement('span');
+        fallback.textContent = initials;
+        aw.replaceChildren(fallback);
+      }, {once:true});
+      photo.src = photoUrl;
+      aw.replaceChildren(photo);
     }
+  }
+
+  function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, function(c) {
+      return {'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c];
+    });
   }
 
   // Findings
@@ -411,12 +412,12 @@ img{max-width:100%;display:block}
     '<strong>58</strong> messages were flagged.',
     'The word <strong>"Love"</strong> appears in <strong>41</strong> messages.',
     'The word <strong>"delicious"</strong> (or similar) in <strong>13</strong> posts.',
-    '<strong>20</strong> photos and <strong>5</strong> videos are behind a password on this phone (<strong>' + (phone||'+15617393952') + '</strong>).',
+    '<strong>20</strong> photos and <strong>5</strong> videos are behind a password on this phone (<strong>' + escapeHTML(phone || 'selected number') + '</strong>).',
     'The word <strong>"Secret"</strong> in <strong>8</strong> messages.',
-    '<strong>2</strong> archived conversations flagged as suspicious (<strong>' + (phone||'+15617393952') + '</strong>).',
+    '<strong>2</strong> archived conversations flagged as suspicious (<strong>' + escapeHTML(phone || 'selected number') + '</strong>).',
     'One unsaved contact - frequent messages, and the word <strong>nostalgia</strong>.',
     '<strong>9</strong> single-view images recovered.',
-    '<strong>7</strong> locations logged near BLOCKED..'
+    '<strong>7</strong> locations logged near ' + escapeHTML(city || 'an undisclosed location') + '.'
   ];
   el = document.getElementById('findingsList');
   if (el) el.innerHTML = findings.map(function(f){ return '<li>' + f + '</li>'; }).join('');
@@ -474,7 +475,7 @@ img{max-width:100%;display:block}
     {q:"What's the risk of waiting?",a:"The longer you wait, the more evidence gets buried. While you hesitate, your partner keeps deleting, hiding, and betraying. Every second counts."}
   ];
   el = document.getElementById('faqContainer');
-  if (el) el.innerHTML = faqs.map(function(f,i){ return '<div class="faq-item"><div class="faq-q"><span class="faq-num">' + (i+1) + '</span><span>' + f.q + '</span></div><div class="faq-a">' + f.a + '</div></div>'; }).join('');
+  if (el) el.innerHTML = faqs.map(function(f,i){ return '<details class="faq-item"><summary class="faq-q"><span class="faq-num">' + (i+1) + '</span><span>' + f.q + '</span></summary><div class="faq-a">' + f.a + '</div></details>'; }).join('');
 
   // Checkout URL with params
   var checkoutUrl = CHECKOUT + '?upsell=true';
@@ -491,27 +492,28 @@ img{max-width:100%;display:block}
   var links = document.querySelectorAll('a[href*="spy.officialprogram"]');
   for (var j = 0; j < links.length; j++) links[j].href = checkoutUrl;
 
-  // Sticky timer
-  var secs = 300;
+  // Wall-clock time stays accurate when the browser throttles background tabs.
+  var deadline = Date.now() + 300000;
   var banner = document.getElementById('banner');
   var timerEl = document.getElementById('bannerTimer');
   var trigger = document.getElementById('stickyTrigger');
-
   function pad(n){ return n < 10 ? '0' + n : '' + n; }
-
-  setInterval(function(){
-    if (secs > 0) secs--;
+  function updateTimer(){
+    var secs = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
     timerEl.textContent = pad(Math.floor(secs/60)) + ':' + pad(secs%60);
-    if (secs <= 30) timerEl.style.background = '#ef4444';
-    else if (secs <= 60) timerEl.style.background = '#f59e0b';
-  }, 1000);
-
-  window.addEventListener('scroll', function(){
-    if (!trigger) return;
-    var top = trigger.getBoundingClientRect().top;
-    if (top <= 0) banner.classList.remove('hidden');
-    else banner.classList.add('hidden');
-  }, {passive:true});
+    timerEl.classList.toggle('is-critical', secs <= 30);
+    timerEl.classList.toggle('is-warning', secs > 30 && secs <= 60);
+    if (!secs) clearInterval(timerInterval);
+  }
+  function updateBanner(){
+    if (trigger && banner) banner.classList.toggle('hidden', trigger.getBoundingClientRect().top > 0);
+  }
+  var timerInterval = setInterval(updateTimer, 1000);
+  updateTimer();
+  updateBanner();
+  window.addEventListener('scroll', updateBanner, {passive:true});
+  window.addEventListener('resize', updateBanner);
+  window.addEventListener('pageshow', function(){ updateTimer(); updateBanner(); });
 
   // Back trap → last-chance-offer
   try {
