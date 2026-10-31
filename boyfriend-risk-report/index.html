@@ -1,285 +1,533 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '2313455752763047');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=2313455752763047&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-  <script src="https://click-charm-73.lovable.app/funnel.js?w=976e24b0-6a4d-4dd1-90af-7b0e1f18cfdd&f=8bdc9e4d-faa1-4793-b0fb-447961d0ba79" data-auto="true" defer></script>
-  <script async src="../assets/js/pixels.js?v=20261008-4"></script>
-  <link rel="icon" type="image/webp" href="../assets/img/uncoverai-logo-256.webp" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Discover the Truth</title>
-  <link rel="stylesheet" href="../assets/css/base.css?v=20261009-1" />
-  <link rel="stylesheet" href="../assets/css/components.css?v=20261009-3" />
-  <link rel="stylesheet" href="../assets/css/pages.css?v=20261030-fix-4" />
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2313455752763047');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2313455752763047&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script src="https://click-charm-73.lovable.app/funnel.js?w=976e24b0-6a4d-4dd1-90af-7b0e1f18cfdd&f=8bdc9e4d-faa1-4793-b0fb-447961d0ba79" data-auto="true" defer></script>
+<script async src="../assets/js/pixels.js?v=20261008-4"></script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Discover the Truth</title>
+<link rel="icon" type="image/webp" href="../assets/img/uncoverai-logo-256.webp"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:#1a2d4a;color:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+.wrap{max-width:520px;margin:0 auto;padding:16px 14px 40px;display:flex;flex-direction:column;gap:16px}
+
+/* sticky banner */
+.banner{position:sticky;top:0;z-index:50;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;padding:10px 14px;background:linear-gradient(180deg,#dc3545,#c82333);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.banner.hidden{display:none}
+.banner span{font-size:12px;font-weight:700}
+.banner-timer{display:inline-flex;align-items:center;padding:4px 8px;border-radius:6px;background:#ffe36a;color:#7a5500;font-size:15px;font-weight:900;font-family:'Courier New',monospace;min-width:56px;justify-content:center}
+.banner .cta-sm{font-size:13px;font-weight:800;padding:8px 14px;border-radius:4px;background:linear-gradient(180deg,#24c85e,#18a54a);color:#fff;box-shadow:0 4px 12px rgba(22,163,74,.25)}
+
+/* cards */
+.card{border-radius:16px;padding:18px 16px;box-shadow:0 10px 28px rgba(8,18,40,.18)}
+.card-light{background:linear-gradient(180deg,#f4f7fc,#e8edf5);color:#1e2f4a}
+.card-danger{background:linear-gradient(135deg,#dc3545,#b02a37);text-align:center}
+.card-offer{background:linear-gradient(180deg,#0f1c2e,#162a46);border:1px solid rgba(255,255,255,.08)}
+
+/* alert */
+.alert-title{font-size:22px;font-weight:900;letter-spacing:1px;margin-bottom:10px}
+.phone-box{display:inline-block;padding:8px 18px;border-radius:8px;background:rgba(0,0,0,.25);font-size:18px;font-weight:700;letter-spacing:1px}
+
+/* risk badge */
+.risk-badge{display:inline-block;padding:6px 14px;border-radius:6px;background:linear-gradient(135deg,#ff4d4d,#cc0000);font-size:13px;font-weight:800;letter-spacing:1px;margin-bottom:10px}
+.warning-text{font-size:15px;line-height:1.6;margin-top:8px}
+.warning-accent{color:#ffe454;font-weight:700}
+
+/* report info */
+.report-top{font-size:11px;font-weight:700;color:#6b7a8d;letter-spacing:.5px;margin-bottom:12px}
+.report-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 10px;background:#2c3e50;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;overflow:hidden}
+.report-avatar img{width:100%;height:100%;object-fit:cover}
+.phone-pill{display:inline-block;padding:6px 16px;border-radius:20px;background:#e2e8f0;color:#1e2f4a;font-size:14px;font-weight:700;margin-bottom:6px}
+.report-id{font-size:11px;color:#8896a8}
+
+/* findings */
+.findings-tab{display:inline-block;padding:6px 14px;border-radius:6px;background:#dc3545;color:#fff;font-size:12px;font-weight:800;letter-spacing:.5px;margin-bottom:12px}
+.findings-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.findings-list li{padding:10px 12px;border-radius:8px;background:rgba(30,47,74,.06);font-size:13px;line-height:1.5;border-left:3px solid #dc3545}
+
+/* heatmap */
+.heatmap-row{margin-bottom:14px}
+.heatmap-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.heatmap-name{font-size:14px;font-weight:700}
+.heatmap-label{font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px}
+.heatmap-label.high{background:#fee2e2;color:#dc2626}
+.heatmap-label.medium{background:#fef3c7;color:#d97706}
+.heatmap-label.low{background:#d1fae5;color:#059669}
+.heatmap-apps{display:flex;gap:8px;margin-bottom:6px}
+.heatmap-app{display:flex;align-items:center;gap:4px;font-size:12px;color:#6b7a8d}
+.heatmap-app img{width:20px;height:20px;border-radius:4px}
+.bar-wrap{height:8px;border-radius:4px;background:#e2e8f0;overflow:hidden}
+.bar{height:100%;border-radius:4px}
+.bar.high{background:linear-gradient(90deg,#ef4444,#dc2626)}
+.bar.medium{background:linear-gradient(90deg,#f59e0b,#d97706)}
+.bar.low{background:linear-gradient(90deg,#10b981,#059669)}
+
+/* location */
+.loc-header{font-size:14px;font-weight:700;margin-bottom:8px}
+.loc-address{font-size:13px;color:#6b7a8d;margin-bottom:10px;padding:8px 12px;background:rgba(30,47,74,.06);border-radius:8px}
+.map-img{border-radius:12px;overflow:hidden}
+
+/* chat screenshot */
+.chat-title{font-size:16px;font-weight:800;margin-bottom:4px}
+.chat-sub{font-size:13px;color:#6b7a8d;margin-bottom:12px}
+.chat-frame{border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.1)}
+
+/* evidence */
+.evidence-photo{border-radius:12px;overflow:hidden;margin-bottom:14px}
+.evidence-box{background:linear-gradient(180deg,#1a1a2e,#16213e);border-radius:12px;padding:16px;text-align:center;color:#fff}
+.evidence-box-title{font-size:14px;font-weight:900;color:#ef4444;margin-bottom:10px;letter-spacing:.5px}
+.evidence-divider{height:1px;background:rgba(255,255,255,.1);margin:10px 0}
+.contacts-row{display:flex;justify-content:center;gap:8px;margin-bottom:8px}
+.contact-pill{padding:4px 12px;border-radius:4px;background:rgba(255,255,255,.1);font-size:13px;font-weight:600}
+.evidence-copy{font-size:13px;line-height:1.5;color:#94a3b8;margin-bottom:8px}
+
+/* VSL */
+.vsl-wrap{position:relative;width:100%;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000;margin-bottom:14px}
+.vsl-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* CTA buttons */
+.cta{display:block;width:100%;text-align:center;padding:16px 20px;border-radius:10px;font-size:16px;font-weight:800;color:#fff;border:none;cursor:pointer;transition:transform .15s}
+.cta:active{transform:scale(.97)}
+.cta-green{background:linear-gradient(180deg,#22c55e,#16a34a);box-shadow:0 8px 24px rgba(22,163,74,.3)}
+.cta-dark{background:linear-gradient(180deg,#1e293b,#0f172a);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+
+/* pricing */
+.offer-chip{display:inline-block;padding:6px 14px;border-radius:6px;background:#dc3545;color:#fff;font-size:12px;font-weight:800;margin-bottom:14px}
+.offer-shell{background:linear-gradient(180deg,#162a46,#1a3355);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:20px 16px;text-align:center}
+.offer-headline{font-size:18px;font-weight:900;margin-bottom:12px}
+.offer-logo{width:60px;margin:0 auto 10px}
+.offer-proof{font-size:12px;color:#94a3b8;margin-bottom:14px}
+.price-was{font-size:14px;color:#94a3b8;text-decoration:line-through}
+.price-now{font-size:48px;font-weight:900;color:#22c55e;margin:4px 0}
+.price-access{font-size:13px;color:#94a3b8;margin-bottom:14px}
+.features{list-style:none;text-align:left;margin-bottom:16px}
+.features li{padding:6px 0;font-size:13px;color:#cbd5e1}
+.features li::before{content:"✓ ";color:#22c55e;font-weight:700}
+.offer-note{font-size:12px;color:#22c55e;margin-top:10px}
+.offer-warning{margin-top:14px;padding:12px;border-radius:8px;background:rgba(220,53,69,.1);border:1px solid rgba(220,53,69,.2)}
+.offer-warning-title{font-size:13px;font-weight:800;color:#ef4444;margin-bottom:4px}
+.offer-warning-copy{font-size:12px;color:#94a3b8;line-height:1.5}
+
+/* quotes */
+.quote-card{background:linear-gradient(180deg,#f9fbff,#edf3f8);border-radius:12px;padding:16px;margin-bottom:12px;color:#1e2f4a}
+.quote-stars{color:#f59e0b;font-size:16px;margin-bottom:6px}
+.quote-text{font-size:13px;line-height:1.6;margin-bottom:8px}
+.quote-author{font-size:13px;font-weight:700}
+.quote-verified{font-size:11px;font-weight:700;color:#22c55e}
+
+/* guarantee */
+.guarantee{text-align:center}
+.guarantee-seal{width:100px;margin:0 auto 12px}
+.guarantee-title{font-size:18px;font-weight:800;margin-bottom:8px}
+.guarantee-copy{font-size:13px;line-height:1.6;color:#6b7a8d;margin-bottom:14px}
+
+/* FAQ */
+.faq-title{font-size:20px;font-weight:900;text-align:center;margin-bottom:4px}
+.faq-underline{width:40px;height:3px;background:#3b82f6;margin:0 auto 16px;border-radius:2px}
+.faq-item{border-bottom:1px solid rgba(30,47,74,.1);padding:12px 0}
+.faq-q{font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:flex-start;gap:8px}
+.faq-num{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:50%;background:#3b82f6;color:#fff;font-size:11px;font-weight:800;flex-shrink:0}
+.faq-a{font-size:13px;line-height:1.6;color:#6b7a8d;margin-top:8px;padding-left:32px}
+
+/* final */
+.final-block{text-align:center;padding:24px 16px}
+.final-badge{display:inline-block;padding:4px 12px;border-radius:4px;background:rgba(220,53,69,.15);color:#ef4444;font-size:12px;font-weight:800;margin-bottom:10px}
+.final-headline{font-size:20px;font-weight:900;margin-bottom:8px}
+.final-copy{font-size:13px;line-height:1.6;color:#94a3b8;margin-bottom:8px}
+.final-urgency{font-size:14px;font-weight:700;color:#ffe454;margin-bottom:14px}
+
+/* activity log */
+.log-panel{background:rgba(30,47,74,.04);border-radius:10px;padding:12px}
+.log-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.log-title{font-size:14px;font-weight:700}
+.forensic-chip{font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px;background:#1e293b;color:#60a5fa;letter-spacing:.5px}
+.log-entry{display:flex;gap:8px;align-items:flex-start;padding:6px 0;font-size:12px;border-bottom:1px solid rgba(30,47,74,.06)}
+.log-time{color:#8896a8;min-width:120px;font-family:'Courier New',monospace;font-size:11px}
+.log-type{padding:2px 6px;border-radius:3px;font-size:10px;font-weight:700;text-transform:uppercase}
+.log-chat{background:#dbeafe;color:#2563eb}
+.log-media{background:#fce7f3;color:#db2777}
+.log-voice{background:#d1fae5;color:#059669}
+.log-desc{color:#475569;flex:1}
+.log-meta{color:#8896a8;font-size:11px;font-style:italic;justify-content:center}
+
+.section-kicker{font-size:12px;font-weight:700;color:#3b82f6;letter-spacing:.5px;margin-bottom:10px}
+.savings-text{font-size:12px;color:#94a3b8;margin-bottom:14px}
+
+@media(max-width:400px){
+  .banner{gap:6px;padding:8px 10px}
+  .banner span{font-size:11px}
+  .alert-title{font-size:18px}
+}
+</style>
 </head>
-<body data-funnel-view="relatorio_de_risco_oferta">
-  <div class="result-page" data-gender="boyfriend">
-    <div class="security-timer-banner hidden" id="stickyBanner">
-      <span class="banner-copy">For your security, this file will disappear in</span>
-      <span class="banner-timer-value" id="bannerTimer">05:00</span>
-      <span class="banner-copy">Unlock full report before time runs out</span>
-      <a href="https://secure.spy.officialprogram.online" class="banner-unlock-link cta-main" data-checkout data-funnel-step="checkout">Unlock Full Report Now</a>
-    </div>
+<body>
 
-    <div class="page-content">
-      <section class="emergency-alert section-card section-card-danger">
-        <div class="alert-title">WARNING: CHEATING DETECTED</div>
-        <div class="alert-phone-box" data-phone>—</div>
-      </section>
+<div class="banner hidden" id="banner">
+  <span>For your security, this file will disappear in</span>
+  <span class="banner-timer" id="bannerTimer">05:00</span>
+  <span>Unlock full report before time runs out</span>
+  <a href="https://secure.spy.officialprogram.online" class="cta-sm">Unlock Full Report Now</a>
+</div>
 
-      <section class="unified-warning section-card section-card-light">
-        <div class="warning-core">
-          <div class="risk-badge">RISK LEVEL: <strong>HIGH</strong></div>
-          <div class="warning-strip warning-strip-accent">Someone here is lying and it is you or them.</div>
-          <div class="warning-strip">
-            Stay in the dark and be the last to know, or see every message, every contact, every secret in seconds.
-          </div>
-        </div>
-      </section>
+<div class="wrap">
 
-      <section class="report-info section-card section-card-light">
-        <div class="report-info-top">REPORT EXPORTED WITH 98% ACCURACY ON: <span id="reportDateTime"></span></div>
+  <!-- ALERT -->
+  <div class="card card-danger">
+    <div class="alert-title">⚠ WARNING: CHEATING DETECTED</div>
+    <div class="phone-box" id="phoneDisplay">—</div>
+  </div>
 
-        <div class="report-export-card">
-          <img id="reportAvatar" class="report-profile-avatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSI0MCIgZmlsbD0iIzM0NDk1ZSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0iY2VudHJhbCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSIjZmZmIiBmb250LXdlaWdodD0iNjAwIj5VUzwvdGV4dD48L3N2Zz4=" alt="profile" />
-          <div class="report-phone-pill" data-phone>—</div>
-          <div class="report-id-line">Report ID: RPT-<span id="reportId">8F9K2M</span></div>
-        </div>
-      </section>
+  <!-- RISK -->
+  <div class="card card-light">
+    <div class="risk-badge">RISK LEVEL: HIGH</div>
+    <div class="warning-text warning-accent">Someone here is lying and it is you or them.</div>
+    <div class="warning-text">Stay in the dark and be the last to know, or see every message, every contact, every secret in seconds.</div>
+  </div>
 
-      <section class="findings-card section-card section-card-light">
-        <div class="findings-tab">KEY FINDINGS</div>
+  <!-- REPORT INFO -->
+  <div class="card card-light" style="text-align:center">
+    <div class="report-top">REPORT EXPORTED WITH 98% ACCURACY ON: <span id="reportDate"></span></div>
+    <div class="report-avatar" id="avatarWrap"><span id="avatarInitials">US</span></div>
+    <div class="phone-pill" id="phoneDisplay2">—</div>
+    <div class="report-id">Report ID: RPT-<span id="reportId"></span></div>
+  </div>
 
-        <ul class="findings-list findings-list-compact" id="findingsList">
-          <li class="finding-item finding-item-lined"><span><strong>58</strong> messages were flagged.</span></li>
-          <li class="finding-item finding-item-lined"><span>The word <strong>"Love"</strong> appears in <strong>41</strong> messages.</span></li>
-          <li class="finding-item finding-item-lined"><span>The word <strong>"delicious"</strong> (or similar) in <strong>13</strong> posts.</span></li>
-          <li class="finding-item finding-item-lined"><span><strong>20</strong> photos and <strong>5</strong> videos are behind a password on this phone.</span></li>
-          <li class="finding-item finding-item-lined"><span>The word <strong>"Secret"</strong> in <strong>8</strong> messages.</span></li>
-          <li class="finding-item finding-item-lined"><span><strong>2</strong> archived conversations flagged as suspicious.</span></li>
-          <li class="finding-item finding-item-lined"><span>One unsaved contact - frequent messages, and the word <strong>nostalgia</strong>.</span></li>
-          <li class="finding-item finding-item-lined"><span><strong>9</strong> single-view images recovered.</span></li>
-          <li class="finding-item finding-item-lined"><span><strong>7</strong> locations logged near BLOCKED..</span></li>
-        </ul>
+  <!-- KEY FINDINGS -->
+  <div class="card card-light">
+    <div class="findings-tab">KEY FINDINGS</div>
+    <ul class="findings-list" id="findingsList"></ul>
 
-        <div class="activity-log-panel">
-          <div class="activity-log-head">
-            <span class="activity-log-title">Activity Log</span>
-            <span class="forensic-chip solid">FORENSIC AUDIT</span>
-          </div>
-
-          <div class="log-entries">
-            <div class="log-entry log-meta">
-              <span class="log-meta-text">Older logs hidden</span>
-            </div>
-
-            <div id="activityLogEntries">
-              <div class="log-entry"><span class="log-time">2026-09-09 17:23:15</span><span class="log-type log-chat">CHAT</span><span class="log-desc">Suspicious message detected: "miss you" (to unknown contact)</span></div>
-              <div class="log-entry"><span class="log-time">2026-09-12 22:45:33</span><span class="log-type log-media">MEDIA</span><span class="log-desc">Deleted video recovered (duration: 00:03:12, text accompanying the message: for my baby...🔥)</span></div>
-              <div class="log-entry"><span class="log-time">2026-09-17 01:17:08</span><span class="log-type log-chat">CHAT</span><span class="log-desc">Hidden chat restored: 47 messages exchanged with saved name "Baby"</span></div>
-              <div class="log-entry"><span class="log-time">2026-09-19 04:33:42</span><span class="log-type log-voice">VOICE</span><span class="log-desc">Deleted voice note recovered: "don't tell anyone"</span></div>
-            </div>
-
-            <div class="log-entry log-meta">
-              <span class="log-meta-text">Newer logs available in full report</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="stickyTrigger" class="heatmap-card section-card section-card-light">
-        <div class="section-heading-row compact">
-          <span class="section-kicker blue">Platform activity analysis</span>
-        </div>
-
-        <div class="heatmap-list" id="heatmapList"></div>
-      </section>
-
-      <section class="location-card section-card section-card-light">
-        <div class="location-header-text">📍 The phone (<span data-phone>—</span>) you want to track was recently located here</div>
-
-        <div class="location-address-bar">
-          Private address: <strong>a private residence near <span id="locationCity">BLOCKED</span></strong>
-        </div>
-
-        <div class="map-preview">
-          <img src="../assets/img/modulo_1.png" class="map-base" alt="location map" />
-        </div>
-      </section>
-
-      <section class="screenshot-card section-card section-card-light">
-        <div class="messages-title">We have detected suspicious messages on WhatsApp</div>
-        <div class="messages-subtitle">(Get access to the app to view messages.)</div>
-
-        <div class="chat-shot-frame">
-          <img id="chatShot" class="chat-screenshot" src="../assets/img/newchatman.png" alt="chat" />
-        </div>
-      </section>
-
-      <section class="evidence-card section-card section-card-light">
-        <div class="messages-title">We have detected photos and videos containing nudity</div>
-        <div class="messages-subtitle">(Get access to the app to view photos without censorship.)</div>
-
-        <div class="censored-photo-wrap">
-          <img src="../assets/img/inthebus.jpg" class="censored-photo" alt="censored proof" />
-        </div>
-
-        <div class="evidence-report-box">
-          <div class="evidence-box-title">CHEATING EVIDENCE FOUND</div>
-          <div class="evidence-divider"></div>
-          <div class="evidence-contacts-row">
-            <span class="evidence-contacts-label">AFFAIR CONTACTS:</span>
-            <span class="contact-pill">********</span>
-            <span class="contact-pill">********</span>
-          </div>
-          <p class="evidence-copy">
-            67% of all deleted messages are from these exact contacts.<br />
-            Raw sexual content recovered and hidden for a reason.
-          </p>
-          <div class="evidence-divider"></div>
-          <div class="analysis-date">Analysis completed: <span id="analysisDate"></span></div>
-          <div class="evidence-divider"></div>
-          <a href="https://secure.spy.officialprogram.online" class="cta-main success" data-checkout data-funnel-step="checkout">Expose Every Hidden Secret Now</a>
-          <div class="evidence-footnote">Full numbers and names revealed instantly. Data 100% guaranteed.</div>
-        </div>
-      </section>
-
-      <section class="how-it-works section-card section-card-light">
-        <div class="how-lead">We've already uncovered hidden files from the phone...</div>
-        <div class="how-bridge">But that's just the beginning.</div>
-        <p class="how-description">
-          With our system, you don't just see what was hidden - you get full control to track, monitor, and recover even more.
-        </p>
-        <div class="how-badge">How It Works</div>
-        <p class="how-subtitle">Watch this quick video and see exactly how the system gives you instant access and complete control - discreetly, securely, and without detection.</p>
-
-        <div class="vsl-result-section">
-          <div class="how-video-wrap">
-            <iframe
-              class="vsl-iframe"
-              src="https://script-prod.b-cdn.net/V0.530/?videoData=https://prod-hostvsl.b-cdn.net/0e3f7df2-86a2-49f1-8227-ec87180c480f/534f5118-ac93-4ba7-9c01-393d71205210/videoInformations.js?VIDEO_ORIGIN=ORIGINAL"
-              title="How it works"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-              referrerpolicy="unsafe-url"
-              loading="eager"
-            ></iframe>
-          </div>
-        </div>
-
-        <a href="https://secure.spy.officialprogram.online" class="cta-main dark" data-checkout data-funnel-step="checkout">Now I Understand - Give Me Access</a>
-      </section>
-
-      <section class="pricing-section section-card section-card-offer">
-        <div class="pricing-prelude">
-          <p>You've seen the preview. Here's how to see everything.</p>
-          <p>
-            The Preview you just saw contains less than 5% of all the info our AI found in the number <strong id="maskedPhone">target</strong>. All the rest is in the full report.
-          </p>
-          <p>
-            We can't give it all away for free. But you don't need to hire a $3,000 investigator. Get the same level of
-            intel for a one-time payment. No subscription, no recurring fees.
-          </p>
-          <p>Unlock the full report below. All the answers you need right now are there, move fast the offer won't last.</p>
-        </div>
-
-        <div class="offer-chip danger">90% off today only - <span id="offerDate"></span></div>
-
-        <div class="offer-shell">
-          <div class="offer-headline">One price. Full report. No subscription.</div>
-          <img src="../assets/img/uncoverai-logo.webp" alt="UncoverAI" class="offer-spy-icon" />
-          <div class="offer-proof-pill">13,847+ reports generated - join them</div>
-
-          <div class="price-panel">
-            <div class="price-original">Was $490</div>
-            <div class="price-today">$49</div>
-            <div class="price-access">One-time. Lifetime access.</div>
-          </div>
-
-          <div class="savings-text">A private investigator costs $3,000+. You get the same intel for $47.</div>
-
-          <ul class="features-list compact-checks">
-            <li>30-day money-back guarantee</li>
-            <li>1-year secure access</li>
-            <li>Track up to 3 numbers</li>
-            <li>Instant access - no waiting</li>
-          </ul>
-
-          <a href="https://secure.spy.officialprogram.online" class="cta-main success" data-checkout data-funnel-step="checkout">Click Here To Expose Everything - 90% OFF TODAY</a>
-
-          <div class="offer-note success-note">30-day money-back guarantee. No questions asked.</div>
-
-          <div class="offer-warning-box">
-            <div class="offer-warning-title">Why act today?</div>
-            <div class="offer-warning-copy">Every second, new messages overwrite old ones. The proof you need could be gone before you come back.</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="quotes-section section-card section-card-light">
-        <div class="quotes-title">What Our Customers Say</div>
-        <div class="quotes-subtitle">Verified reviews from people who unlocked their full report</div>
-        <div id="quotesList"></div>
-      </section>
-
-      <section class="guarantee-card section-card section-card-light accent-green">
-        <img src="../assets/img/guarantee.png" alt="guarantee" class="guarantee-seal" />
-        <h3 class="guarantee-title">30-Day Money-Back Guarantee</h3>
-        <p class="guarantee-copy">
-          In accordance with U.S. law, we are required to refund you if you are not satisfied within the application window.
-          However, being fully confident that our application works perfectly, we have extended this guarantee to 30 days.
-          This means you have twice the time to test the application and see the results for yourself - with no risk.
-          If, for any reason, you are not satisfied, we will refund you - no questions asked.
-        </p>
-        <div class="guarantee-support-label">If you have any questions regarding refunds, contact:</div>
-        <div class="guarantee-support-name">Customer Service</div>
-        <a href="https://secure.spy.officialprogram.online" class="cta-main success" data-checkout data-funnel-step="checkout">Final Chance - Unlock Your Answers Now</a>
-      </section>
-
-      <section class="video-testimonials section-card section-card-light">
-        <div class="quotes-title">They Unlocked the Report - Here's What They Found</div>
-
-        <div id="videoTestimonialsList"></div>
-
-        <div class="video-cta-shell">
-          <a href="https://secure.spy.officialprogram.online" class="cta-main success compact" data-checkout data-funnel-step="checkout">Get Your Full Report Now</a>
-        </div>
-      </section>
-
-      <section class="faq-section section-card section-card-light">
-        <div class="faq-title">Frequently Asked Questions</div>
-        <div class="faq-title-underline"></div>
-
-        <div class="faq-container" id="faqContainer"></div>
-      </section>
-
-      <section class="final-cta-block section-card">
-        <div class="final-badge">Limited time</div>
-        <div class="final-headline">One click between you and the truth</div>
-        <div class="final-copy">
-          You've seen the preview. The full report is ready - hidden chats, deleted media, and every contact.
-          The only thing missing is you. Leave this page and the discount ends.
-        </div>
-        <div class="final-urgency">Unlock the complete report now - 90% off. No second chances.</div>
-        <a href="https://secure.spy.officialprogram.online" class="cta-main success final" data-checkout data-funnel-step="checkout">Yes - show me everything</a>
-      </section>
+    <div class="log-panel" style="margin-top:14px">
+      <div class="log-head">
+        <span class="log-title">Activity Log</span>
+        <span class="forensic-chip">FORENSIC AUDIT</span>
+      </div>
+      <div class="log-entry log-meta">Older logs hidden</div>
+      <div id="logEntries"></div>
+      <div class="log-entry log-meta">Newer logs available in full report</div>
     </div>
   </div>
-  <script type="module" src="../assets/js/pages/report.js?v=20261030-fix-4"></script>
+
+  <!-- HEATMAP -->
+  <div class="card card-light" id="stickyTrigger">
+    <div class="section-kicker">Platform activity analysis</div>
+    <div id="heatmapList"></div>
+  </div>
+
+  <!-- LOCATION -->
+  <div class="card card-light">
+    <div class="loc-header">📍 The phone (<span class="phone-inline">—</span>) you want to track was recently located here</div>
+    <div class="loc-address">Private address: <strong>a private residence near <span id="city">BLOCKED</span></strong></div>
+    <div class="map-img"><img src="../assets/img/modulo_1.png" alt="location map"/></div>
+  </div>
+
+  <!-- CHAT SCREENSHOT -->
+  <div class="card card-light">
+    <div class="chat-title">We have detected suspicious messages on WhatsApp</div>
+    <div class="chat-sub">(Get access to the app to view messages.)</div>
+    <div class="chat-frame"><img id="chatShot" src="../assets/img/newchatman.png" alt="chat"/></div>
+  </div>
+
+  <!-- EVIDENCE -->
+  <div class="card card-light">
+    <div class="chat-title">We have detected photos and videos containing nudity</div>
+    <div class="chat-sub">(Get access to the app to view photos without censorship.)</div>
+    <div class="evidence-photo"><img src="../assets/img/inthebus.jpg" alt="censored"/></div>
+    <div class="evidence-box">
+      <div class="evidence-box-title">CHEATING EVIDENCE FOUND</div>
+      <div class="evidence-divider"></div>
+      <div class="contacts-row">
+        <span class="contact-pill">********</span>
+        <span class="contact-pill">********</span>
+      </div>
+      <p class="evidence-copy">67% of all deleted messages are from these exact contacts. Raw sexual content recovered and hidden for a reason.</p>
+      <div class="evidence-divider"></div>
+      <div style="font-size:12px;color:#6b7a8d;margin-bottom:10px">Analysis completed: <span id="analysisDate"></span></div>
+      <div class="evidence-divider"></div>
+      <a href="https://secure.spy.officialprogram.online" class="cta cta-green">Expose Every Hidden Secret Now</a>
+      <div style="font-size:11px;color:#94a3b8;margin-top:8px">Full numbers and names revealed instantly. Data 100% guaranteed.</div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS + VSL -->
+  <div class="card card-light">
+    <div style="font-size:16px;font-weight:800;margin-bottom:4px">We've already uncovered hidden files from the phone...</div>
+    <div style="font-size:14px;font-weight:700;color:#3b82f6;margin-bottom:8px">But that's just the beginning.</div>
+    <p style="font-size:13px;line-height:1.6;color:#6b7a8d;margin-bottom:10px">With our system, you don't just see what was hidden - you get full control to track, monitor, and recover even more.</p>
+    <div style="display:inline-block;padding:4px 12px;border-radius:4px;background:#3b82f6;color:#fff;font-size:12px;font-weight:800;margin-bottom:8px">How It Works</div>
+    <p style="font-size:12px;line-height:1.5;color:#6b7a8d;margin-bottom:14px">Watch this quick video and see exactly how the system gives you instant access and complete control - discreetly, securely, and without detection.</p>
+    <div class="vsl-wrap">
+      <iframe src="https://script-prod.b-cdn.net/V0.530/?videoData=https://prod-hostvsl.b-cdn.net/0e3f7df2-86a2-49f1-8227-ec87180c480f/534f5118-ac93-4ba7-9c01-393d71205210/videoInformations.js?VIDEO_ORIGIN=ORIGINAL" title="How it works" allow="fullscreen" referrerpolicy="unsafe-url"></iframe>
+    </div>
+    <a href="https://secure.spy.officialprogram.online" class="cta cta-dark">Now I Understand - Give Me Access</a>
+  </div>
+
+  <!-- PRICING -->
+  <div class="card card-offer">
+    <p style="font-size:14px;line-height:1.6;margin-bottom:6px">You've seen the preview. Here's how to see everything.</p>
+    <p style="font-size:13px;line-height:1.6;color:#94a3b8;margin-bottom:6px">The Preview you just saw contains less than 5% of all the info our AI found in the number <strong id="maskedPhone"></strong>. All the rest is in the full report.</p>
+    <p style="font-size:13px;line-height:1.6;color:#94a3b8;margin-bottom:6px">We can't give it all away for free. But you don't need to hire a $3,000 investigator. Get the same level of intel for a one-time payment. No subscription, no recurring fees.</p>
+    <p style="font-size:14px;font-weight:700;margin-bottom:14px">Unlock the full report below. All the answers you need right now are there, move fast the offer won't last.</p>
+
+    <div class="offer-chip">90% off today only - <span id="offerDate"></span></div>
+
+    <div class="offer-shell">
+      <div class="offer-headline">One price. Full report. No subscription.</div>
+      <img src="../assets/img/uncoverai-logo.webp" alt="UncoverAI" class="offer-logo"/>
+      <div class="offer-proof">13,847+ reports generated - join them</div>
+      <div class="price-was">Was $490</div>
+      <div class="price-now">$49</div>
+      <div class="price-access">One-time. Lifetime access.</div>
+      <div class="savings-text">A private investigator costs $3,000+. You get the same intel for $47.</div>
+      <ul class="features">
+        <li>30-day money-back guarantee</li>
+        <li>1-year secure access</li>
+        <li>Track up to 3 numbers</li>
+        <li>Instant access - no waiting</li>
+      </ul>
+      <a href="https://secure.spy.officialprogram.online" class="cta cta-green">Click Here To Expose Everything - 90% OFF TODAY</a>
+      <div class="offer-note">30-day money-back guarantee. No questions asked.</div>
+      <div class="offer-warning">
+        <div class="offer-warning-title">Why act today?</div>
+        <div class="offer-warning-copy">Every second, new messages overwrite old ones. The proof you need could be gone before you come back.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="card card-light">
+    <div style="font-size:18px;font-weight:800;text-align:center;margin-bottom:4px">What Our Customers Say</div>
+    <div style="font-size:12px;color:#6b7a8d;text-align:center;margin-bottom:14px">Verified reviews from people who unlocked their full report</div>
+    <div id="quotesList"></div>
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="card card-light guarantee" style="border-left:4px solid #22c55e">
+    <img src="../assets/img/guarantee.png" alt="guarantee" class="guarantee-seal"/>
+    <h3 class="guarantee-title">30-Day Money-Back Guarantee</h3>
+    <p class="guarantee-copy">In accordance with U.S. law, we are required to refund you if you are not satisfied within the application window. However, being fully confident that our application works perfectly, we have extended this guarantee to 30 days. This means you have twice the time to test the application and see the results for yourself - with no risk. If, for any reason, you are not satisfied, we will refund you - no questions asked.</p>
+    <div style="font-size:12px;color:#6b7a8d;margin-bottom:4px">If you have any questions regarding refunds, contact:</div>
+    <div style="font-size:14px;font-weight:700;margin-bottom:14px">Customer Service</div>
+    <a href="https://secure.spy.officialprogram.online" class="cta cta-green">Final Chance - Unlock Your Answers Now</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="card card-light">
+    <div class="faq-title">Frequently Asked Questions</div>
+    <div class="faq-underline"></div>
+    <div id="faqContainer"></div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="card final-block">
+    <div class="final-badge">Limited time</div>
+    <div class="final-headline">One click between you and the truth</div>
+    <div class="final-copy">You've seen the preview. The full report is ready - hidden chats, deleted media, and every contact. The only thing missing is you. Leave this page and the discount ends.</div>
+    <div class="final-urgency">Unlock the complete report now - 90% off. No second chances.</div>
+    <a href="https://secure.spy.officialprogram.online" class="cta cta-green" style="font-size:18px">Yes - show me everything</a>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var CHECKOUT = 'https://secure.spy.officialprogram.online';
+  var phone = '';
+  var city = '';
+  var gender = 'boyfriend';
+  try { phone = localStorage.getItem('targetPhoneNumber') || ''; } catch(e){}
+  try { city = localStorage.getItem('lf_city') || ''; } catch(e){}
+
+  // detect gender from URL
+  if (location.pathname.indexOf('girlfriend') !== -1) gender = 'girlfriend';
+
+  var reportId = Math.random().toString(36).slice(2, 10).toUpperCase();
+  var now = new Date();
+  var dateOpts = {month:'long',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true,timeZone:'America/New_York'};
+  var reportDate = new Intl.DateTimeFormat('en-US', dateOpts).format(now);
+  var shortDate = new Intl.DateTimeFormat('en-US', {month:'short',day:'numeric',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'America/New_York'}).format(now);
+  var offerDate = new Intl.DateTimeFormat('en-US', {month:'long',day:'numeric',year:'numeric',timeZone:'America/New_York'}).format(now);
+
+  var masked = 'target';
+  if (phone && phone.length >= 6) masked = phone.slice(0,6) + '***' + phone.slice(-2);
+
+  var initials = 'US';
+  if (phone.indexOf('+55') === 0) initials = 'BR';
+  else if (phone.indexOf('+351') === 0) initials = 'PT';
+  else if (phone.indexOf('+44') === 0) initials = 'GB';
+
+  // Fill phone displays
+  var phoneEls = document.querySelectorAll('#phoneDisplay, #phoneDisplay2, .phone-inline');
+  for (var i = 0; i < phoneEls.length; i++) phoneEls[i].textContent = phone || '—';
+
+  var el;
+  el = document.getElementById('reportDate'); if(el) el.textContent = reportDate;
+  el = document.getElementById('reportId'); if(el) el.textContent = reportId;
+  el = document.getElementById('maskedPhone'); if(el) el.textContent = masked;
+  el = document.getElementById('offerDate'); if(el) el.textContent = offerDate;
+  el = document.getElementById('analysisDate'); if(el) el.textContent = shortDate;
+  el = document.getElementById('city'); if(el) el.textContent = city || 'BLOCKED';
+  el = document.getElementById('avatarInitials'); if(el) el.textContent = initials;
+
+  // Chat screenshot based on gender
+  el = document.getElementById('chatShot');
+  if (el) el.src = gender === 'girlfriend' ? '../assets/img/newchatwoman.png' : '../assets/img/newchatman.png';
+
+  // Profile photo
+  var photoUrl = '';
+  try { photoUrl = localStorage.getItem('lf_photo_url') || ''; } catch(e){}
+  if (photoUrl && photoUrl.indexOf('http') === 0) {
+    var aw = document.getElementById('avatarWrap');
+    if (aw) {
+      aw.innerHTML = '<img src="' + photoUrl + '" alt="profile" onerror="this.parentNode.innerHTML=\'<span>' + initials + '</span>\'">';
+    }
+  }
+
+  // Findings
+  var findings = [
+    '<strong>58</strong> messages were flagged.',
+    'The word <strong>"Love"</strong> appears in <strong>41</strong> messages.',
+    'The word <strong>"delicious"</strong> (or similar) in <strong>13</strong> posts.',
+    '<strong>20</strong> photos and <strong>5</strong> videos are behind a password on this phone (<strong>' + (phone||'+15617393952') + '</strong>).',
+    'The word <strong>"Secret"</strong> in <strong>8</strong> messages.',
+    '<strong>2</strong> archived conversations flagged as suspicious (<strong>' + (phone||'+15617393952') + '</strong>).',
+    'One unsaved contact - frequent messages, and the word <strong>nostalgia</strong>.',
+    '<strong>9</strong> single-view images recovered.',
+    '<strong>7</strong> locations logged near BLOCKED..'
+  ];
+  el = document.getElementById('findingsList');
+  if (el) el.innerHTML = findings.map(function(f){ return '<li>' + f + '</li>'; }).join('');
+
+  // Activity log
+  var logs = [
+    {time:'2026-09-09 17:23:15',type:'log-chat',label:'CHAT',desc:'Suspicious message detected: "miss you" (to unknown contact)'},
+    {time:'2026-09-12 22:45:33',type:'log-media',label:'MEDIA',desc:'Deleted video recovered (duration: 00:03:12, text: for my baby...🔥)'},
+    {time:'2026-09-17 01:17:08',type:'log-chat',label:'CHAT',desc:'Hidden chat restored: 47 messages exchanged with saved name "Baby"'},
+    {time:'2026-09-19 04:33:42',type:'log-voice',label:'VOICE',desc:'Deleted voice note recovered: "don\'t tell anyone"'}
+  ];
+  el = document.getElementById('logEntries');
+  if (el) el.innerHTML = logs.map(function(e){ return '<div class="log-entry"><span class="log-time">' + e.time + '</span><span class="log-type ' + e.type + '">' + e.label + '</span><span class="log-desc">' + e.desc + '</span></div>'; }).join('');
+
+  // Heatmap
+  var heatmap = [
+    {name:'Messaging Apps',activity:'92%, High Activity',cls:'high',pct:92,apps:[{n:'WhatsApp',i:'../assets/img/apps/whatsapp.png'},{n:'Telegram',i:'../assets/img/apps/telegram.png'}]},
+    {name:'Social Media',activity:'65%, Medium Activity',cls:'medium',pct:65,apps:[{n:'Instagram',i:'../assets/img/apps/instagram.png'},{n:'Facebook',i:'../assets/img/apps/facebook.png'}]},
+    {name:'Dating Apps',activity:'78%, High Activity',cls:'high',pct:78,apps:[{n:'Tinder',i:'../assets/img/apps/tinder.svg'},{n:'Bumble',i:'../assets/img/apps/bumble.png'}]},
+    {name:'Email and Work',activity:'35%, Low Activity',cls:'low',pct:35,apps:[{n:'Gmail',i:'../assets/img/apps/gmail.png'},{n:'Outlook',i:'../assets/img/apps/outlook.png'}]}
+  ];
+  el = document.getElementById('heatmapList');
+  if (el) el.innerHTML = heatmap.map(function(h){
+    var apps = h.apps.map(function(a){ return '<span class="heatmap-app"><img src="' + a.i + '" alt="' + a.n + '" onerror="this.parentNode.style.display=\'none\'"/>' + a.n + '</span>'; }).join('');
+    return '<div class="heatmap-row"><div class="heatmap-top"><div class="heatmap-name">' + h.name + '</div><div class="heatmap-label ' + h.cls + '">' + h.activity + '</div></div><div class="heatmap-apps">' + apps + '</div><div class="bar-wrap"><div class="bar ' + h.cls + '" style="width:' + h.pct + '%"></div></div></div>';
+  }).join('');
+
+  // Quotes
+  var quotes = [
+    {name:'Amanda S.',text:"I honestly thought it was all in my head. In less than 10 minutes looking at the report, I found messages, photos, and locations that explained EVERYTHING. I'm not living in denial anymore."},
+    {name:'Jason R.',text:"If I hadn't used this system, I'd still be begging for 'more attention' from someone who was giving way too much attention to somebody else. The recovered messages left zero room for excuses."},
+    {name:'Emily M.',text:"I was always afraid to 'snoop and find something.' This isn't snooping, it's seeing organized data: times, numbers, the same little love words over and over..."},
+    {name:'Daniel T.',text:"He kept saying it was just a friend from work. The report showed archived conversations, deleted messages, and even the places where they were meeting up. There's no arguing when you have proof."},
+    {name:'Sarah V.',text:"I almost backed out at the payment screen, thinking I was overreacting. Now I regret not doing it sooner. The conversations flagged as suspicious showed exactly what I was afraid of."}
+  ];
+  el = document.getElementById('quotesList');
+  if (el) el.innerHTML = quotes.map(function(q){ return '<div class="quote-card"><div class="quote-stars">★★★★★</div><p class="quote-text">' + q.text + '</p><div style="display:flex;justify-content:space-between;align-items:center"><span class="quote-author">' + q.name + '</span><span class="quote-verified">VERIFIED</span></div></div>'; }).join('');
+
+  // FAQ
+  var faqs = [
+    {q:'How accurate is this system?',a:"Our AI doesn't guess - it exposes digital proof. Words, photos, messages, hidden files, locations. If it exists, you'll see it."},
+    {q:'Can my partner hide their activity from this tool?',a:"No chance. Password-protected files, archived chats, deleted images, even single-view content - nothing stays hidden."},
+    {q:"Will I really see what they're hiding?",a:"Yes. You'll see actual messages, photos, videos, and suspicious contacts. This is raw evidence, not assumptions."},
+    {q:'Is this information reliable?',a:"This is not a toy. It's powered by surveillance-grade AI, built to catch lies, secrets, and betrayal without fail."},
+    {q:"What happens if I don't check the full report?",a:"Then you keep living blind. While you hesitate, the cheating continues. Ignoring the truth only makes the betrayal grow."},
+    {q:"Will my partner know I'm using this?",a:"Never. The process is 100% invisible. They won't see alerts, notifications, or warnings."},
+    {q:'What if they already deleted everything?',a:"Doesn't matter. The system restores erased messages, photos, and files. Deleting is useless - the truth always resurfaces."},
+    {q:'Does this work anywhere?',a:"Yes. At home, work, hotels, or secret residences - every location is tracked and reported."},
+    {q:'How fast do I get the results?',a:"Instantly. The AI scans in seconds, and your full report is ready immediately."},
+    {q:'Why should I pay for this instead of ignoring it?',a:"Because ignoring means choosing to live in a lie. The truth is cheap. Betrayal costs everything."},
+    {q:'What exactly will I see inside the report?',a:"You'll see hidden conversations, suspicious keywords, private media, restored deleted files, and tracked locations."},
+    {q:"What if I don't find anything?",a:"Then you win. You'll know the truth and finally have peace of mind. But if something is happening, you'll catch it red-handed."},
+    {q:'Can I use this more than once?',a:"Yes. You can scan and re-scan as much as needed. Every time new activity happens, you'll have the proof."},
+    {q:'Is this legal?',a:"This is digital intelligence for personal security. The report is private, confidential, and for your eyes only."},
+    {q:"What's the risk of waiting?",a:"The longer you wait, the more evidence gets buried. While you hesitate, your partner keeps deleting, hiding, and betraying. Every second counts."}
+  ];
+  el = document.getElementById('faqContainer');
+  if (el) el.innerHTML = faqs.map(function(f,i){ return '<div class="faq-item"><div class="faq-q"><span class="faq-num">' + (i+1) + '</span><span>' + f.q + '</span></div><div class="faq-a">' + f.a + '</div></div>'; }).join('');
+
+  // Checkout URL with params
+  var checkoutUrl = CHECKOUT + '?upsell=true';
+  if (phone) checkoutUrl += '&tel=' + encodeURIComponent(phone) + '&phone=' + encodeURIComponent(phone);
+  // Add tracking from sessionStorage
+  try {
+    var tp = JSON.parse(sessionStorage.getItem('private_quizz_tracking_params_v1') || '{}');
+    for (var k in tp) {
+      if (tp.hasOwnProperty(k) && tp[k]) checkoutUrl += '&' + encodeURIComponent(k) + '=' + encodeURIComponent(tp[k]);
+    }
+  } catch(e){}
+
+  // Set all checkout links
+  var links = document.querySelectorAll('a[href*="spy.officialprogram"]');
+  for (var j = 0; j < links.length; j++) links[j].href = checkoutUrl;
+
+  // Sticky timer
+  var secs = 300;
+  var banner = document.getElementById('banner');
+  var timerEl = document.getElementById('bannerTimer');
+  var trigger = document.getElementById('stickyTrigger');
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  setInterval(function(){
+    if (secs > 0) secs--;
+    timerEl.textContent = pad(Math.floor(secs/60)) + ':' + pad(secs%60);
+    if (secs <= 30) timerEl.style.background = '#ef4444';
+    else if (secs <= 60) timerEl.style.background = '#f59e0b';
+  }, 1000);
+
+  window.addEventListener('scroll', function(){
+    if (!trigger) return;
+    var top = trigger.getBoundingClientRect().top;
+    if (top <= 0) banner.classList.remove('hidden');
+    else banner.classList.add('hidden');
+  }, {passive:true});
+
+  // Back trap → last-chance-offer
+  try {
+    history.pushState({bt:1}, '', location.href);
+    window.addEventListener('popstate', function(){
+      var tracking = '';
+      try {
+        var tp2 = JSON.parse(sessionStorage.getItem('private_quizz_tracking_params_v1') || '{}');
+        var parts = [];
+        for (var k2 in tp2) { if (tp2.hasOwnProperty(k2) && tp2[k2]) parts.push(encodeURIComponent(k2) + '=' + encodeURIComponent(tp2[k2])); }
+        if (parts.length) tracking = '?' + parts.join('&');
+      } catch(e2){}
+      location.href = '../last-chance-offer/' + tracking;
+    });
+  } catch(e){}
+})();
+</script>
 </body>
 </html>
