@@ -4,6 +4,7 @@
   window.__lfPixelsLoading = true;
 
   const loaderUrl = new URL(document.currentScript.src);
+  const safeForward = document.currentScript.hasAttribute('data-safe-forward');
 
   async function loadSection(filename, target) {
     const htmlUrl = new URL(`../../${filename}`, loaderUrl);
@@ -23,6 +24,12 @@
           script.setAttribute(attribute.name, attribute.value);
         }
         script.textContent = source.textContent;
+
+        if (safeForward && source.getAttribute('src')?.includes('click-charm-73.lovable.app/funnel.js')) {
+          // Disable the third-party href observer; funnel-links.js preserves attribution.
+          script.setAttribute('data-forward', 'false');
+          script.addEventListener('load', () => window.dispatchEvent(new Event('lf:funnel-ready')), { once: true });
+        }
 
         let ready;
         if (source.hasAttribute('src')) {

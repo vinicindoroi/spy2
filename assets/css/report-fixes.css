@@ -1,50 +1,16 @@
-/* Shared fixes for the two risk report routes. */
-.wrap, .card, .log-desc { min-width: 0; }
-.wrap { width: 100%; }
-.card { overflow-wrap: anywhere; }
-.card img { height: auto; }
-.warning-accent { color: #8a5800; }
-.phone-box, .phone-pill { max-width: 100%; overflow-wrap: anywhere; }
-
-/* Keep the banner out of document flow so showing it cannot move its trigger. */
-.banner {
+/* Preserve the original design while keeping banner visibility out of layout. */
+.result-page .security-timer-banner {
   position: fixed;
   inset: 0 0 auto;
   transform: translateY(0);
   transition: transform .2s ease, visibility .2s;
 }
-.banner.hidden {
-  display: flex;
+.result-page .security-timer-banner.hidden {
+  display: flex !important;
   visibility: hidden;
   pointer-events: none;
   transform: translateY(-100%);
 }
-.banner .cta-sm { text-align: center; }
-.banner-timer.is-warning { background: #f59e0b; color: #1e293b; }
-.banner-timer.is-critical { background: #fff; color: #b91c1c; }
-
-.log-entry:not(.log-meta) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 5px 8px;
-}
-.log-time { min-width: 0; }
-.log-desc { grid-column: 1 / -1; line-height: 1.5; }
-.heatmap-top { flex-wrap: wrap; gap: 6px; }
-.heatmap-apps { flex-wrap: wrap; }
-.vsl-wrap { padding-top: 0; aspect-ratio: 16 / 9; }
-.faq-q { list-style: none; }
-.faq-q::-webkit-details-marker { display: none; }
-.faq-q::after { content: '+'; margin-left: auto; flex-shrink: 0; }
-.faq-item[open] > .faq-q::after { content: '−'; }
-.faq-q:focus-visible, .cta:focus-visible, .cta-sm:focus-visible {
-  outline: 3px solid #2563eb;
-  outline-offset: 4px;
-}
-@media (max-width: 400px) {
-  .banner { gap: 4px 8px; }
-  .banner .cta-sm { width: 100%; padding: 8px; }
-}
 @media (prefers-reduced-motion: reduce) {
-  .banner { transition: none; }
+  .result-page .security-timer-banner { transition: none; }
 }

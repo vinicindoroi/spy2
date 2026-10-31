@@ -11,6 +11,9 @@ const $$ = (sel) => document.querySelectorAll(sel);
 
 const gender = $('.result-page').dataset.gender || 'boyfriend';
 const phone = store.targetPhoneNumber || '';
+const escapeHTML = (value) => String(value).replace(/[&<>"']/g, (c) => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+})[c]);
 
 /* --- Computed values (same formulas as the original) --- */
 const reportId = Math.random().toString(36).slice(2, 10).toUpperCase();
@@ -23,7 +26,7 @@ const maskedPhone = (() => {
 const countryInitials = store.getCountryInitials(phone);
 
 const profileSrc = (() => {
-  if (store.userPhotoUrl?.startsWith('http')) return store.userPhotoUrl;
+  if (store.photoPhone === phone && /^https?:\/\//i.test(store.userPhotoUrl)) return store.userPhotoUrl;
   return store.fallbackPhotoUrl || store.generateSVGAvatar(countryInitials, 80);
 })();
 
@@ -57,9 +60,9 @@ const criticalFindings = [
   '<strong>58</strong> messages were flagged.',
   'The word <strong>"Love"</strong> appears in <strong>41</strong> messages.',
   'The word <strong>"delicious"</strong> (or similar) in <strong>13</strong> posts.',
-  `<strong>20</strong> photos and <strong>5</strong> videos are behind a password on this phone (<strong>${phone || '+15617393952'}</strong>).`,
+  `<strong>20</strong> photos and <strong>5</strong> videos are behind a password on this phone (<strong>${escapeHTML(phone || 'selected number')}</strong>).`,
   'The word <strong>"Secret"</strong> in <strong>8</strong> messages.',
-  `<strong>2</strong> archived conversations flagged as suspicious (<strong>${phone || '+15617393952'}</strong>).`,
+  `<strong>2</strong> archived conversations flagged as suspicious (<strong>${escapeHTML(phone || 'selected number')}</strong>).`,
   'One unsaved contact - frequent messages, and the word <strong>nostalgia</strong>.',
   '<strong>9</strong> single-view images recovered.',
   '<strong>7</strong> locations logged near BLOCKED..',
@@ -164,8 +167,8 @@ const avatar = $('#reportAvatar');
 avatar.src = profileSrc;
 avatar.addEventListener('error', () => {
   localStorage.setItem('lf_photo_url', '');
-  avatar.src = store.fallbackPhotoUrl || store.generateSVGAvatar(countryInitials, 80);
-});
+  avatar.src = store.generateSVGAvatar(countryInitials, 80);
+}, { once: true });
 
 $('#findingsList').innerHTML = criticalFindings
   .map((f) => `<li class="finding-item finding-item-lined"><span>${f}</span></li>`)
@@ -232,33 +235,44 @@ $$('[data-checkout]').forEach((a) => { a.href = checkoutUrl; });
 $$('.faq-link').forEach((a) => { a.classList.add('cta-main'); });
 
 /* --- Sticky timer (shows when the heatmap card reaches the top) --- */
-let timerSecs = 300;
+const deadline = Date.now() + 300000;
 let timerInterval = null;
 const banner = $('#stickyBanner');
 const bannerTimer = $('#bannerTimer');
+const trigger = $('#stickyTrigger');
+let bannerVisible = false;
+let scrollFrame = null;
 
 function updateStickyTimerVisibility() {
-  const trigger = $('#stickyTrigger');
+  scrollFrame = null;
   if (!trigger) return;
-  banner.classList.toggle('hidden', trigger.getBoundingClientRect().top > 0);
+  const visible = trigger.getBoundingClientRect().top <= 0;
+  if (visible === bannerVisible) return;
+  bannerVisible = visible;
+  banner.classList.toggle('hidden', !visible);
+}
+
+function scheduleBannerUpdate() {
+  if (scrollFrame === null) scrollFrame = requestAnimationFrame(updateStickyTimerVisibility);
 }
 
 function renderTimer() {
+  const timerSecs = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
   const m = Math.floor(timerSecs / 60).toString().padStart(2, '0');
   const s = (timerSecs % 60).toString().padStart(2, '0');
   bannerTimer.textContent = `${m}:${s}`;
   const state = timerSecs <= 30 ? 'critical' : timerSecs <= 60 ? 'warning' : 'normal';
   banner.classList.remove('is-normal', 'is-warning', 'is-critical');
   banner.classList.add(`is-${state}`);
+  if (timerSecs === 0) clearInterval(timerInterval);
 }
 
-timerInterval = setInterval(() => {
-  if (timerSecs > 0) timerSecs -= 1;
-  renderTimer();
-}, 1000);
+timerInterval = setInterval(renderTimer, 1000);
 renderTimer();
 
-window.addEventListener('scroll', updateStickyTimerVisibility, { passive: true });
+window.addEventListener('scroll', scheduleBannerUpdate, { passive: true });
+window.addEventListener('resize', scheduleBannerUpdate);
+window.addEventListener('pageshow', () => { renderTimer(); scheduleBannerUpdate(); });
 
 /* --- Back-trap: browser back → /last-chance-offer --- */
 window.history.pushState({ reportBackOffer: true }, '', window.location.href);
