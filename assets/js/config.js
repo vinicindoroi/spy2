@@ -6,7 +6,7 @@ export const API_BASE_URL = (
   'https://private-quizz-api-production.up.railway.app'
 ).replace(/\/$/, '');
 
-export const CHECKOUT_URL = 'https://secure.spy.officialprogram.online';
+export const CHECKOUT_URL = 'https://spy.pay-online.lat/';
 
 /* Per-offer variables: price, anchor, discount, CTA, checkout and back-trap target.
    Pages select one via data-offer="back39" | "back29" on #offerRoot.
@@ -15,13 +15,13 @@ export const OFFERS = {
   back39: {
     price: 39, was: 47, save: 8,
     cta: 'Show Me What You Found for $39',
-    checkoutUrl: "https://secure.spy.officialprogram.online",
+    checkoutUrl: "https://spy.pay-online.lat/",
     next: '../last-chance-offer-29/',
   },
   back29: {
     price: 29, was: 47, save: 18,
     cta: 'Unlock For $29',
-    checkoutUrl: "https://secure.spy.officialprogram.online",
+    checkoutUrl: "https://spy.pay-online.lat/",
     next: '',
   },
 };
