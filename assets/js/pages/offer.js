@@ -3,7 +3,7 @@
 import '../navigate.js?v=20261011-sck-1';
 import { store } from '../store.js?v=20261011-sck-1';
 import { appendTrackingToUrl, withTracking } from '../tracking.js?v=20261011-sck-1';
-import { CHECKOUT_URL, OFFERS } from '../config.js?v=20261009-1';
+import { buildCheckoutUrl, CHECKOUT_URL, OFFERS } from '../config.js?v=20261009-1';
 
 const $ = (id) => document.getElementById(id);
 const root = $('offerRoot');
@@ -64,10 +64,12 @@ store.fetchProfilePhotoWithRetry(store.targetPhoneNumber, { allowMissing: true }
 
 /* --- Checkout: offer=back + price + tel + tracking --- */
 const checkoutUrl = (() => {
-  const url = new URL(cfg.checkout);
-  url.searchParams.set('offer', 'back');
-  url.searchParams.set('price', String(cfg.price));
-  if (store.targetPhoneNumber) { url.searchParams.set('tel', store.targetPhoneNumber); url.searchParams.set('phone', store.targetPhoneNumber); }
+  const url = buildCheckoutUrl({
+    offer: 'back',
+    price: String(cfg.price),
+    tel: store.targetPhoneNumber,
+    phone: store.targetPhoneNumber
+  });
   appendTrackingToUrl(url);
   return url.toString();
 })();
