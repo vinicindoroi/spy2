@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UncoverAI — Access Granted • Digital Intelligence Dossier</title>
+  <link rel="icon" type="image/webp" href="../assets/img/uncoverai-logo-256.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #070d1a;
+      --card-bg: rgba(13, 24, 48, 0.75);
+      --card-border: rgba(0, 145, 255, 0.2);
+      --cyan-neon: #00d2ff;
+      --blue-primary: #0080ff;
+      --green-success: #10b981;
+      --text-white: #ffffff;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 55%),
+        radial-gradient(circle at 10% 40%, rgba(0, 210, 255, 0.08) 0%, transparent 40%);
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 16px 60px;
+      line-height: 1.5;
+    }
+
+    .header {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0 20px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .brand-title span {
+      background: linear-gradient(135deg, var(--cyan-neon) 0%, var(--blue-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .status-badge {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .main-wrapper {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 145, 255, 0.1);
+    }
+
+    .success-icon-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid var(--green-success);
+      color: var(--green-success);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.35);
+      animation: scaleCheck 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes scaleCheck {
+      0% { transform: scale(0.4); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .card-title {
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .card-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* Target Dossier Box */
+    .dossier-box {
+      background: rgba(6, 13, 29, 0.9);
+      border: 1px solid rgba(0, 145, 255, 0.25);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .dossier-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 14px;
+    }
+
+    .dossier-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .dossier-label {
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .dossier-value {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .pill-unlocked {
+      background: rgba(0, 210, 255, 0.15);
+      border: 1px solid var(--cyan-neon);
+      color: var(--cyan-neon);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .btn-dashboard {
+      width: 100%;
+      height: 56px;
+      background: linear-gradient(135deg, #0080ff 0%, #00d2ff 100%);
+      border: none;
+      border-radius: 14px;
+      color: #031326;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(0, 145, 255, 0.4);
+      transition: all 0.25s ease;
+      margin-bottom: 20px;
+    }
+
+    .btn-dashboard:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(0, 145, 255, 0.6);
+    }
+
+    .instructions-card {
+      background: rgba(15, 28, 55, 0.6);
+      border: 1px solid rgba(0, 145, 255, 0.15);
+      border-radius: 12px;
+      padding: 16px 18px;
+      text-align: left;
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .instructions-card strong {
+      color: #fff;
+    }
+
+    .support-note {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="#" class="brand-logo">
+      <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="16" fill="#07132c" stroke="#00d2ff" stroke-width="2"/>
+        <path d="M12 21C11.4 21 11 20.5 11 20V17C11 14.2 13.2 12 16 12H20C22.8 12 25 14.2 25 17V20C25 20.5 24.6 21 24 21" stroke="#00d2ff" stroke-width="2" stroke-linecap="round"/>
+        <rect x="10" y="18" width="4" height="6" rx="2" fill="#00d2ff"/>
+        <rect x="22" y="18" width="4" height="6" rx="2" fill="#00d2ff"/>
+      </svg>
+      <div class="brand-title">Uncover<span>AI</span></div>
+    </a>
+
+    <div class="status-badge">
+      <span>● Access Granted</span>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <section class="card">
+      <div class="success-icon-wrap">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <h1 class="card-title">Payment Confirmed — Intelligence Dossier Unlocked!</h1>
+      <p class="card-subtitle">
+        Welcome, <strong style="color: #fff;" id="userName">Valued Member</strong>! Your digital intelligence report is ready for instant viewing and extraction.
+      </p>
+
+      <div class="dossier-box">
+        <div class="dossier-row">
+          <span class="dossier-label">Report ID</span>
+          <span class="dossier-value" id="reportId">RPT-849204</span>
+        </div>
+        <div class="dossier-row">
+          <span class="dossier-label">Target Phone</span>
+          <span class="dossier-value" id="targetPhone">••••</span>
+        </div>
+        <div class="dossier-row">
+          <span class="dossier-label">Account Delivery</span>
+          <span class="dossier-value" id="userEmail">••••</span>
+        </div>
+        <div class="dossier-row">
+          <span class="dossier-label">Forensic Modules</span>
+          <span class="pill-unlocked">100% DECRYPTED</span>
+        </div>
+        <div class="dossier-row" id="upsellBadgeRow" style="display: none;">
+          <span class="dossier-label">Deleted Messages Vault</span>
+          <span class="pill-unlocked" style="background: rgba(16, 185, 129, 0.15); border-color: #10b981; color: #34d399;">ACTIVATED ✓</span>
+        </div>
+      </div>
+
+      <a href="#" id="btnOpenDashboard" class="btn-dashboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        <span>Access My Intelligence Report Now</span>
+      </a>
+
+      <div class="instructions-card">
+        <strong>📧 Check your inbox:</strong> We have dispatched your credentials and report download link to <strong id="userEmailNotice">your email</strong>. Please allow 1 to 3 minutes for delivery (check spam/promotions folder if needed).
+      </div>
+
+      <div class="support-note">
+        Need assistance with your report? Contact Priority Support at <strong>support@uncoverai.com</strong>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get('name') || 'Customer';
+      const email = urlParams.get('email') || 'your email';
+      const phone = urlParams.get('phone') || urlParams.get('tel') || 'Protected Target';
+      const upsellBought = urlParams.get('upsell_bought') === '1';
+
+      if (document.getElementById('userName')) document.getElementById('userName').textContent = name;
+      if (document.getElementById('userEmail')) document.getElementById('userEmail').textContent = email;
+      if (document.getElementById('userEmailNotice')) document.getElementById('userEmailNotice').textContent = email;
+      if (document.getElementById('targetPhone')) document.getElementById('targetPhone').textContent = phone;
+
+      // Random report ID
+      const randId = 'RPT-' + Math.floor(100000 + Math.random() * 900000);
+      if (document.getElementById('reportId')) document.getElementById('reportId').textContent = randId;
+
+      if (upsellBought) {
+        const upRow = document.getElementById('upsellBadgeRow');
+        if (upRow) upRow.style.display = 'flex';
+      }
+
+      const btnDashboard = document.getElementById('btnOpenDashboard');
+      if (btnDashboard) {
+        btnDashboard.addEventListener('click', (e) => {
+          e.preventDefault();
+          alert('Opening UncoverAI Digital Forensic Viewer for Report ' + randId + '...');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

