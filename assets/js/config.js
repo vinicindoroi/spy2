@@ -10,13 +10,13 @@ export const API_BASE_URL = (
 export const CHECKOUT_VARIANTS = {
   A: {
     id: 'a',
-    name: 'spy_official',
-    host: 'secure.spy.officialprogram.online',
-    baseUrl: 'https://secure.spy.officialprogram.online',
+    name: 'spy_lat',
+    host: 'spy.pay-online.lat',
+    baseUrl: 'https://spy.pay-online.lat',
   },
   B: {
     id: 'b',
-    name: 'pay_online',
+    name: 'spy_secure_lat',
     host: 'spy-secure.pay-online.lat',
     baseUrl: 'https://spy-secure.pay-online.lat',
   },
@@ -25,18 +25,18 @@ export const CHECKOUT_VARIANTS = {
 /**
  * Returns the assigned checkout variant for the session (50/50 split).
  * Preserves stickiness via sessionStorage so a user remains on the same checkout throughout the funnel.
- * Supports manual override: ?ck=a | ?ck=b | ?checkout=pay-online | ?checkout=spy
+ * Supports manual override: ?ck=a | ?ck=b | ?checkout=spy-secure | ?checkout=spy
  */
 export function getCheckoutVariant() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
     const forceCk = (urlParams.get('ck') || urlParams.get('checkout') || urlParams.get('split') || '').toLowerCase();
     
-    if (forceCk === 'b' || forceCk.includes('pay-online') || forceCk === 'lat') {
+    if (forceCk === 'b' || forceCk.includes('spy-secure') || forceCk === 'secure') {
       try { sessionStorage.setItem('lf_checkout_variant', 'B'); } catch (e) {}
       return CHECKOUT_VARIANTS.B;
     }
-    if (forceCk === 'a' || forceCk.includes('official') || forceCk.includes('secure.spy')) {
+    if (forceCk === 'a' || forceCk.includes('spy.pay') || forceCk === 'spy') {
       try { sessionStorage.setItem('lf_checkout_variant', 'A'); } catch (e) {}
       return CHECKOUT_VARIANTS.A;
     }
