@@ -706,11 +706,16 @@
         if (timerEl) timerEl.textContent = m + ':' + s;
       }, 1000);
 
-      // Determine Worker Checkout Base URL
-      const checkoutHost = urlParams.get('checkout_host') || window.location.hostname;
+      // Determine Worker Checkout Base URL (Where /api/stripe-charge-upsell lives)
+      let checkoutHost = urlParams.get('checkout_host') || urlParams.get('ck_host') || '';
+      if (!checkoutHost || checkoutHost.includes('spyprogram') || checkoutHost.includes('netlify') || checkoutHost === window.location.hostname) {
+        const variant = (urlParams.get('checkout_variant') || '').toLowerCase();
+        checkoutHost = variant === 'b' ? 'spy-secure.pay-online.lat' : 'spy.pay-online.lat';
+      }
+
       const apiBase = (checkoutHost.includes('localhost') || checkoutHost.includes('127.0.0.1'))
         ? ''
-        : (window.location.protocol + '//' + checkoutHost);
+        : ('https://' + checkoutHost.replace(/^https?:\/\//, ''));
 
       const btnAccept = document.getElementById('btnAcceptUpsell');
       const btnAcceptText = document.getElementById('btnAcceptText');
@@ -720,8 +725,12 @@
       // 1-Click Charge
       btnAccept.addEventListener('click', async () => {
         if (!customerId || !paymentMethodId) {
-          // If accessing without checkout session, redirect cleanly to thanks
-          window.location.href = '../thanks/' + window.location.search;
+          // If accessing directly to test without checkout session, simulate 1-click & advance to thanks
+          btnAccept.disabled = true;
+          btnAcceptText.textContent = '✓ Simulating 1-Click Decryption...';
+          setTimeout(() => {
+            window.location.href = '../thanks/' + window.location.search;
+          }, 1200);
           return;
         }
 
