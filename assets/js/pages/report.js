@@ -3,7 +3,7 @@
 import '../navigate.js?v=20261011-sck-1';
 import { store } from '../store.js?v=20261011-sck-1';
 import { appendTrackingToUrl } from '../tracking.js?v=20261011-sck-1';
-import { buildCheckoutUrl, CHECKOUT_URL } from '../config.js?v=20261009-1';
+import { CHECKOUT_URL } from '../config.js?v=20261009-1';
 import { go } from '../navigate.js?v=20261011-sck-1';
 
 const $ = (sel) => document.querySelector(sel);
@@ -48,7 +48,9 @@ const offerDate = new Intl.DateTimeFormat('en-US', {
 
 /* Checkout: upsell=true + tel + tracking */
 const checkoutUrl = (() => {
-  const url = buildCheckoutUrl({ upsell: 'true', tel: phone, phone });
+  const url = new URL(CHECKOUT_URL);
+  url.searchParams.set('upsell', 'true');
+  if (phone) url.searchParams.set('tel', phone);
   appendTrackingToUrl(url);
   return url.toString();
 })();

@@ -30,9 +30,9 @@
       <section class="unified-warning section-card section-card-light">
         <div class="warning-core">
           <div class="risk-badge">RISK LEVEL: <strong>HIGH</strong></div>
-          <div class="warning-strip warning-strip-accent">Someone here is lying and it is you or them.</div>
+          <div class="warning-strip warning-strip-accent">Our system found evidence that this person is hiding something from you.</div>
           <div class="warning-strip">
-            Stay in the dark and be the last to know, or see every message, every contact, every secret in seconds.
+            Deleted messages, hidden conversations, and suspicious contacts were recovered from this number.
           </div>
         </div>
       </section>
@@ -49,7 +49,6 @@
 
       <section class="findings-card section-card section-card-light">
         <div class="findings-tab">KEY FINDINGS</div>
-
         <ul class="findings-list findings-list-compact" id="findingsList"></ul>
 
         <div class="activity-log-panel">
@@ -57,14 +56,11 @@
             <span class="activity-log-title">Activity Log</span>
             <span class="forensic-chip solid">FORENSIC AUDIT</span>
           </div>
-
           <div class="log-entries">
             <div class="log-entry log-meta">
               <span class="log-meta-text">Older logs hidden</span>
             </div>
-
             <div id="activityLogEntries"></div>
-
             <div class="log-entry log-meta">
               <span class="log-meta-text">Newer logs available in full report</span>
             </div>
@@ -76,35 +72,37 @@
         <div class="section-heading-row compact">
           <span class="section-kicker blue">Platform activity analysis</span>
         </div>
-
         <div class="heatmap-list" id="heatmapList"></div>
       </section>
 
-      <section class="location-card section-card section-card-light">
-        <div class="location-header-text">📍 The phone (<span data-phone>—</span>) you want to track was recently located here</div>
+      <!-- FIRST CTA — right after the data -->
+      <section class="section-card section-card-offer" style="text-align:center;padding:24px 16px;">
+        <div style="font-size:15px;color:rgba(255,255,255,.7);margin-bottom:12px;">You've seen what our system found. Unlock the full report now.</div>
+        <a href="#" class="cta-main success" data-checkout style="font-size:17px;padding:16px 32px;">Unlock Full Report — Only $19</a>
+        <div class="cta-price-tag"><span class="cta-price-old">$99</span> <span class="cta-price-now">$19</span> <span class="cta-price-label">— one-time payment</span></div>
+      </section>
 
+      <section class="location-card section-card section-card-light">
+        <div class="location-header-text">📍 The phone (<span data-phone>—</span>) was recently located here</div>
         <div class="location-address-bar">
           Private address: <strong>a private residence near <span id="locationCity">BLOCKED</span></strong>
         </div>
-
         <div class="map-preview">
           <img src="../assets/img/modulo_1.png" class="map-base" alt="location map" />
         </div>
       </section>
 
       <section class="screenshot-card section-card section-card-light">
-        <div class="messages-title">We have detected suspicious messages on WhatsApp</div>
-        <div class="messages-subtitle">(Get access to the app to view messages.)</div>
-
+        <div class="messages-title">Suspicious messages detected on WhatsApp</div>
+        <div class="messages-subtitle">(Full conversations revealed in the complete report.)</div>
         <div class="chat-shot-frame">
           <img id="chatShot" class="chat-screenshot" alt="chat" />
         </div>
       </section>
 
       <section class="evidence-card section-card section-card-light">
-        <div class="messages-title">We have detected photos and videos containing nudity</div>
-        <div class="messages-subtitle">(Get access to the app to view photos without censorship.)</div>
-
+        <div class="messages-title">Photos and videos containing nudity detected</div>
+        <div class="messages-subtitle">(Uncensored content available in the full report.)</div>
         <div class="censored-photo-wrap">
           <img src="../assets/img/inthebus.jpg" class="censored-photo" alt="censored proof" />
         </div>
@@ -123,79 +121,47 @@
           </p>
           <div class="evidence-divider"></div>
           <div class="analysis-date">Analysis completed: <span id="analysisDate"></span></div>
-          <div class="evidence-divider"></div>
-          <a href="#" class="cta-main success" data-checkout>Expose Every Hidden Secret Now</a>
-          <div class="evidence-footnote">Full numbers and names revealed instantly. Data 100% guaranteed.</div>
         </div>
       </section>
 
-      <section class="how-it-works section-card section-card-light">
-        <div class="how-lead">We've already uncovered hidden files from the phone...</div>
-        <div class="how-bridge">But that's just the beginning.</div>
-        <p class="how-description">
-          With our system, you don't just see what was hidden - you get full control to track, monitor, and recover even more.
-        </p>
-        <div class="how-badge">How It Works</div>
-        <p class="how-subtitle">Watch this quick video and see exactly how the system gives you instant access and complete control - discreetly, securely, and without detection.</p>
-
-        <div class="vsl-result-section">
-          <div class="how-video-wrap">
-            <iframe
-              class="vsl-iframe"
-              src="https://script-prod.b-cdn.net/V0.530/?videoData=https://prod-hostvsl.b-cdn.net/0e3f7df2-86a2-49f1-8227-ec87180c480f/534f5118-ac93-4ba7-9c01-393d71205210/videoInformations.js?VIDEO_ORIGIN=ORIGINAL"
-              title="How it works"
-              allow="fullscreen"
-              referrerpolicy="unsafe-url"
-            ></iframe>
-          </div>
-        </div>
-
-        <a href="#" class="cta-main dark" data-checkout>Now I Understand - Give Me Access</a>
-      </section>
-
+      <!-- MAIN OFFER — clean, direct -->
       <section class="pricing-section section-card section-card-offer">
-        <div class="pricing-prelude">
-          <p>You've seen the preview. Here's how to see everything.</p>
-            <p>
-              The Preview you just saw contains less than 5% of all the info our AI found in the number <strong id="maskedPhone"></strong>. All the rest is in the full report.
-            </p>
-          <p>
-            We can't give it all away for free. But you don't need to hire a $3,000 investigator. Get the same level of
-            intel for a one-time payment. No subscription, no recurring fees.
-          </p>
-          <p>Unlock the full report below. All the answers you need right now are there, move fast the offer won't last.</p>
+        <div class="pricing-prelude" style="text-align:center;">
+          <p style="font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;">Everything you need to know is in the full report.</p>
+          <p>Every conversation. Every social media. Every call. Every deleted photo. All exposed — right in front of your eyes.</p>
+          <p>A private investigator costs $3,000+. You get the same intel for <strong style="color:#4ade80;">$19</strong>.</p>
         </div>
-
-        <div class="offer-chip danger">94% off today only - <span id="offerDate"></span></div>
 
         <div class="offer-shell">
           <div class="offer-headline">One price. Full report. No subscription.</div>
           <img src="../assets/img/uncoverai-logo.webp" alt="UncoverAI" class="offer-spy-icon" />
-          <div class="offer-proof-pill">13,847+ reports generated - join them</div>
 
           <div class="price-panel">
-            <div class="price-original">Was $490</div>
-            <div class="price-today">$29</div>
+            <div class="price-original">Was $99</div>
+            <div class="price-today">$19</div>
             <div class="price-access">One-time. Lifetime access.</div>
           </div>
 
-          <div class="savings-text">A private investigator costs $3,000+. You get the same intel for $29.</div>
-
           <ul class="features-list compact-checks">
-            <li>30-day money-back guarantee</li>
-            <li>1-year secure access</li>
+            <li>All social media conversations</li>
+            <li>Deleted photos &amp; videos recovered</li>
+            <li>Call logs &amp; contact list</li>
+            <li>GPS location history (60 days)</li>
             <li>Track up to 3 numbers</li>
-            <li>Instant access - no waiting</li>
+            <li>Instant access — no waiting</li>
           </ul>
 
-          <a href="#" class="cta-main success" data-checkout>Click Here To Expose Everything - 94% OFF TODAY</a>
+          <a href="#" class="cta-main success" data-checkout style="font-size:18px;padding:18px 32px;">Unlock Full Report — $19</a>
+          <div class="cta-price-tag"><span class="cta-price-old">$99</span> <span class="cta-price-now">$19</span> <span class="cta-price-label">— one-time payment · no subscription</span></div>
 
-          <div class="offer-note success-note">30-day money-back guarantee. No questions asked.</div>
-
-          <div class="offer-warning-box">
-            <div class="offer-warning-title">Why act today?</div>
-            <div class="offer-warning-copy">Every second, new messages overwrite old ones. The proof you need could be gone before you come back.</div>
+          <!-- Trust seals -->
+          <div style="display:flex;justify-content:center;gap:16px;margin-top:20px;flex-wrap:wrap;">
+            <div style="background:rgba(255,255,255,.08);border-radius:8px;padding:8px 14px;font-size:12px;color:rgba(255,255,255,.65);">🔒 256-bit SSL</div>
+            <div style="background:rgba(255,255,255,.08);border-radius:8px;padding:8px 14px;font-size:12px;color:rgba(255,255,255,.65);">✅ 30-day refund</div>
+            <div style="background:rgba(255,255,255,.08);border-radius:8px;padding:8px 14px;font-size:12px;color:rgba(255,255,255,.65);">👁️ 100% anonymous</div>
           </div>
+
+          <div class="offer-note success-note" style="margin-top:16px;">30-day money-back guarantee. No questions asked.</div>
         </div>
       </section>
 
@@ -205,49 +171,85 @@
         <div id="quotesList"></div>
       </section>
 
-      <section class="guarantee-card section-card section-card-light accent-green">
-        <img src="../assets/img/guarantee.png" alt="guarantee" class="guarantee-seal" />
-        <h3 class="guarantee-title">30-Day Money-Back Guarantee</h3>
-        <p class="guarantee-copy">
-          In accordance with U.S. law, we are required to refund you if you are not satisfied within the application window.
-          However, being fully confident that our application works perfectly, we have extended this guarantee to 30 days.
-          This means you have twice the time to test the application and see the results for yourself - with no risk.
-          If, for any reason, you are not satisfied, we will refund you - no questions asked.
-        </p>
-        <div class="guarantee-support-label">If you have any questions regarding refunds, contact:</div>
-        <div class="guarantee-support-name">Customer Service</div>
-        <a href="#" class="cta-main success" data-checkout>Final Chance - Unlock Your Answers Now</a>
-      </section>
-
-      <section class="video-testimonials section-card section-card-light">
-        <div class="quotes-title">They Unlocked the Report - Here's What They Found</div>
-
-        <div id="videoTestimonialsList"></div>
-
-        <div class="video-cta-shell">
-          <a href="#" class="cta-main success compact" data-checkout>Get Your Full Report Now</a>
-        </div>
-      </section>
-
       <section class="faq-section section-card section-card-light">
         <div class="faq-title">Frequently Asked Questions</div>
         <div class="faq-title-underline"></div>
-
         <div class="faq-container" id="faqContainer"></div>
       </section>
 
+      <!-- FINAL CTA -->
       <section class="final-cta-block section-card">
-        <div class="final-badge">Limited time</div>
-        <div class="final-headline">One click between you and the truth</div>
+        <div class="final-headline">The truth is right here. Don't walk away from it.</div>
         <div class="final-copy">
-          You've seen the preview. The full report is ready - hidden chats, deleted media, and every contact.
-          The only thing missing is you. Leave this page and the discount ends.
+          Every message, every photo, every secret — ready to be revealed. The only thing left is your decision.
         </div>
-        <div class="final-urgency">Unlock the complete report now - 94% off. No second chances.</div>
-        <a href="#" class="cta-main success final" data-checkout>Yes - show me everything</a>
+        <a href="#" class="cta-main success final" data-checkout style="font-size:18px;padding:18px 32px;">Yes — Show Me Everything · $19</a>
+        <div class="cta-price-tag"><span class="cta-price-old">$99</span> <span class="cta-price-now">$19</span> <span class="cta-price-label">— one-time payment</span></div>
       </section>
     </div>
   </div>
+  <!-- Fixed mobile CTA -->
+  <div class="fixed-mobile-cta" id="fixedCta">
+    <a href="#" data-checkout class="fixed-cta-btn">
+      <span class="fixed-cta-text">UNLOCK FULL REPORT</span>
+      <span class="fixed-cta-price"><s>$99</s> $19</span>
+    </a>
+  </div>
+
+  <style>
+    .fixed-mobile-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      padding: 12px 16px;
+      padding-bottom: max(12px, env(safe-area-inset-bottom));
+      background: linear-gradient(transparent 0%, rgba(2,10,30,.97) 40%);
+      text-align: center;
+    }
+    .fixed-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #16a34a 100%);
+      background-size: 200% 200%;
+      animation: pulseGlow 2s ease-in-out infinite;
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      text-decoration: none;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(34,197,94,.45), 0 0 0 2px rgba(34,197,94,.2);
+    }
+    .fixed-cta-text {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+    .fixed-cta-price {
+      font-size: 17px;
+      font-weight: 800;
+    }
+    .fixed-cta-price s {
+      opacity: .55;
+      font-size: 14px;
+      font-weight: 600;
+      margin-right: 2px;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 4px 24px rgba(34,197,94,.45), 0 0 0 2px rgba(34,197,94,.2); background-position: 0% 50%; }
+      50% { box-shadow: 0 4px 32px rgba(34,197,94,.65), 0 0 0 3px rgba(34,197,94,.35); background-position: 100% 50%; }
+    }
+    .result-page .page-content { padding-bottom: 90px; }
+  </style>
+
   <script type="module" src="../assets/js/pages/report.js?v=20261031-2"></script>
 </body>
 </html>

@@ -14,3 +14,27 @@
 @media (prefers-reduced-motion: reduce) {
   .result-page .security-timer-banner { transition: none; }
 }
+
+/* Price tag below CTA buttons */
+.cta-price-tag {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255,255,255,.7);
+}
+.cta-price-old {
+  text-decoration: line-through;
+  color: rgba(255,255,255,.45);
+  font-size: 14px;
+  margin-right: 4px;
+}
+.cta-price-now {
+  color: #4ade80;
+  font-size: 22px;
+  font-weight: 800;
+}
+.cta-price-label {
+  font-size: 13px;
+  color: rgba(255,255,255,.5);
+}
