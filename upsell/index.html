@@ -710,7 +710,7 @@
       let checkoutHost = urlParams.get('checkout_host') || urlParams.get('ck_host') || '';
       if (!checkoutHost || checkoutHost.includes('spyprogram') || checkoutHost.includes('netlify') || checkoutHost === window.location.hostname) {
         const variant = (urlParams.get('checkout_variant') || '').toLowerCase();
-        checkoutHost = variant === 'b' ? 'spy-secure.pay-online.lat' : 'spy.pay-online.lat';
+        checkoutHost = 'spy-secure.pay-online.lat';
       }
 
       const apiBase = (checkoutHost.includes('localhost') || checkoutHost.includes('127.0.0.1'))
