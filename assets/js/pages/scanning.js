@@ -150,10 +150,6 @@ function updateProgressState(elapsed) {
   $('msgCount').textContent = msgCount;
 
   $('explicitBanner').classList.toggle('hidden', !showCriticalAlert);
-  if (!window._ctaRevealedByTimer) {
-    $('topCta').classList.toggle('hidden', !showFinalButtons);
-    $('bottomCta').classList.toggle('hidden', !showFinalButtons);
-  }
 }
 
 function pushLogsForProgress() {
