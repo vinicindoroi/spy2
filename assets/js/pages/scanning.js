@@ -150,8 +150,10 @@ function updateProgressState(elapsed) {
   $('msgCount').textContent = msgCount;
 
   $('explicitBanner').classList.toggle('hidden', !showCriticalAlert);
-  $('topCta').classList.toggle('hidden', !showFinalButtons);
-  $('bottomCta').classList.toggle('hidden', !showFinalButtons);
+  if (!window._ctaRevealedByTimer) {
+    $('topCta').classList.toggle('hidden', !showFinalButtons);
+    $('bottomCta').classList.toggle('hidden', !showFinalButtons);
+  }
 }
 
 function pushLogsForProgress() {
@@ -255,6 +257,12 @@ progressInterval = setInterval(() => {
     clearInterval(progressInterval);
   }
 }, 300);
+
+setTimeout(() => {
+  window._ctaRevealedByTimer = true;
+  $('topCta').classList.remove('hidden');
+  $('bottomCta').classList.remove('hidden');
+}, 273000);
 
 setInterval(() => { activeDot = (activeDot + 1) % 5; paintDots(); }, 1000);
 
