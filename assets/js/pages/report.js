@@ -155,36 +155,30 @@ const faqs = [
 
 /* --- Render --- */
 $$('[data-phone]').forEach((el) => { el.textContent = phone || '—'; });
-const _set = (sel, val) => { const el = $(sel); if (el) el.textContent = val; };
-_set('#reportDateTime', reportDateTime);
-_set('#reportId', reportId);
-_set('#maskedPhone', maskedPhone);
-_set('#offerDate', offerDate);
-_set('#analysisDate', shortReportDate);
-_set('#locationCity', store.city || 'BLOCKED');
-const chatImg = $('#chatShot');
-if (chatImg) chatImg.src = gender === 'girlfriend' ? '../assets/img/newchatwoman.png' : '../assets/img/newchatman.png';
+$('#reportDateTime').textContent = reportDateTime;
+$('#reportId').textContent = reportId;
+$('#maskedPhone').textContent = maskedPhone;
+$('#offerDate').textContent = offerDate;
+$('#analysisDate').textContent = shortReportDate;
+$('#locationCity').textContent = store.city || 'BLOCKED';
+$('#chatShot').src = gender === 'girlfriend' ? '../assets/img/newchatwoman.png' : '../assets/img/newchatman.png';
 
 const avatar = $('#reportAvatar');
-if (avatar) {
-  avatar.src = profileSrc;
-  avatar.addEventListener('error', () => {
-    localStorage.setItem('lf_photo_url', '');
-    avatar.src = store.generateSVGAvatar(countryInitials, 80);
-  }, { once: true });
-}
+avatar.src = profileSrc;
+avatar.addEventListener('error', () => {
+  localStorage.setItem('lf_photo_url', '');
+  avatar.src = store.generateSVGAvatar(countryInitials, 80);
+}, { once: true });
 
-const _html = (sel, val) => { const el = $(sel); if (el) el.innerHTML = val; };
-
-_html('#findingsList', criticalFindings
+$('#findingsList').innerHTML = criticalFindings
   .map((f) => `<li class="finding-item finding-item-lined"><span>${f}</span></li>`)
-  .join(''));
+  .join('');
 
-_html('#activityLogEntries', activityLog
+$('#activityLogEntries').innerHTML = activityLog
   .map((e) => `<div class="log-entry"><span class="log-time">${e.time}</span><span class="log-type ${e.type}">${e.label}</span><span class="log-desc">${e.desc}</span></div>`)
-  .join(''));
+  .join('');
 
-_html('#heatmapList', heatmapData
+$('#heatmapList').innerHTML = heatmapData
   .map((item) => `
     <div class="heatmap-row">
       <div class="heatmap-top-row">
@@ -198,9 +192,9 @@ _html('#heatmapList', heatmapData
         <div class="heatmap-bar ${item.class}" style="width: ${item.pct}%"></div>
       </div>
     </div>`)
-  .join(''));
+  .join('');
 
-_html('#quotesList', textTestimonials
+$('#quotesList').innerHTML = textTestimonials
   .map((q) => `
     <div class="quote-card">
       <div class="quote-stars">★★★★★</div>
@@ -210,7 +204,7 @@ _html('#quotesList', textTestimonials
         <div class="quote-verified">VERIFIED</div>
       </div>
     </div>`)
-  .join(''));
+  .join('');
 
 const vtList = $('#videoTestimonialsList');
 if (vtList) vtList.innerHTML = videoTestimonials
@@ -226,7 +220,7 @@ if (vtList) vtList.innerHTML = videoTestimonials
     </div>`)
   .join('');
 
-_html('#faqContainer', faqs
+$('#faqContainer').innerHTML = faqs
   .map((faq, i) => `
     <div class="faq-item">
       <div class="faq-question">
@@ -235,7 +229,7 @@ _html('#faqContainer', faqs
       </div>
       <div class="faq-answer">${faq.answer}</div>
     </div>`)
-  .join(''));
+  .join('');
 
 $$('[data-checkout]').forEach((a) => { a.href = checkoutUrl; });
 $$('.faq-link').forEach((a) => { a.classList.add('cta-main'); });
@@ -266,12 +260,10 @@ function renderTimer() {
   const timerSecs = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
   const m = Math.floor(timerSecs / 60).toString().padStart(2, '0');
   const s = (timerSecs % 60).toString().padStart(2, '0');
-  if (bannerTimer) bannerTimer.textContent = `${m}:${s}`;
+  bannerTimer.textContent = `${m}:${s}`;
   const state = timerSecs <= 30 ? 'critical' : timerSecs <= 60 ? 'warning' : 'normal';
-  if (banner) {
-    banner.classList.remove('is-normal', 'is-warning', 'is-critical');
-    banner.classList.add(`is-${state}`);
-  }
+  banner.classList.remove('is-normal', 'is-warning', 'is-critical');
+  banner.classList.add(`is-${state}`);
   if (timerSecs === 0) clearInterval(timerInterval);
 }
 
